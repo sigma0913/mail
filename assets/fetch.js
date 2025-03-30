@@ -1,6 +1,6 @@
 console.clear();
-let times = ["---"];
-let whose = ["[!]"];
+let times = ["　"];
+let whose = ["　"];
 let notes = ["直近100件を読み込みます。"];
 const url = "https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLg32RcW3RJFpXyVTTqIC2toahSZKiraUxk7OrkPek5scuzWjen4rEMS6jzhvGl3wJMG9rgeHA9lyqwyB4p0UK2W2z4-gFihWd9wpbu82RmuJGotvOhEIsSomgvrk6OMyU2jeAEknj-Box8HGwIPkV8ke_Yi-WMvNCHxU-QbchoeDCmJMxA02Zd8VvUA-uhfv5-KUWoLoO_6_rnZfgLKPsBKJncd9buZPdUYdfmSJ_irNLTy1ICb1HtqFExoeplQpsyL9Qw3AploA9YW989FCQKmoXl1lykDfqYj-f_B&lib=MGMFwvEFybYZbEEwDgQ57nI-tcHohpwJB"
 const config = {
@@ -34,12 +34,6 @@ async function loaddata() {
                                 }
 
                         });
-                
-                        console.log(data);
-                        console.log(times);
-                        console.log(whose);
-                        console.log(notes);
-                        console.log(times.length)
 
                         const table = document.getElementById("msgtable");
 
@@ -49,14 +43,13 @@ async function loaddata() {
                         let childtdid;
                         let parenttr;
 
-                        for (let i = 0; i < times.length; i++) {
+                        for (let i = times.length - 1; i > -1; i--) {
 
                                 parenttrelem = document.createElement("tr");
-                                parenttrelem.setAttribute("id",String(i) + "col")
-                                console.log(parenttrelem);
+                                parenttrelem.setAttribute("id","col" + String(i))
                                 table.appendChild(parenttrelem);
 
-                                parenttr = document.getElementById(String(i) + "col")
+                                parenttr = document.getElementById("col" + String(i))
 
                                 for (let j = 0; j < 3; j++) {
 

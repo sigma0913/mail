@@ -5,14 +5,91 @@ body{
 
 header{
     height: 60px;
-    width: 100%;
+    width: 100vw;
     position: fixed;
     border-bottom: 1px solid #000;
-}
-h1{
-    font-size: 30px;
-    margin:10px;
+    background-color: #cec;
 }
 .blank{
     height: 60px;
+}
+
+h1{
+    font-size: 30px;
+    margin:10px;
+    width: 65px;
+    display: inline-block;
+}
+.buttons{
+    position: fixed;
+    width: 180px;
+    height: 60px;
+    left: calc(100vw - 180px);
+}
+.buttons>a{
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    margin: 11.5px 3px;
+    font-size: 20px;
+    height: 27px;
+    padding: 5px;
+    border-radius: 6px;
+    background-color: #4ba6a9;
+}
+
+@media (max-width: 600px){
+    .tdtime{
+        display: inline-block;
+        width: 95px;
+    }
+    .tdwho{
+        display: inline-block;
+        width: 95px;
+    }
+    .tdnote{
+        display: inline-block;
+        width: calc(100vw - 336px);
+    }
+}
+@media (min-width: 601px){
+    .tdtime{
+        display: inline-block;
+        width: 160px;
+    }
+    .tdwho{
+        display: inline-block;
+        width: 160px;
+    }
+    .tdnote{
+        display: inline-block;
+        width: calc(100vw - 350px);
+    }
+}
+
+td{
+    border-left: #000 1px dashed;
+    padding: 3px;
+    font-family: 'Noto Sans JP' 'Yu Gothic UI','ヒラギノ角ゴシック','Hiragino Sans',sans-serif;
+}
+
+tr{
+    display: inline-block;
+}
+
+.tdtime{
+    border-left: #fff 0px solid;
+}
+
+.scbutton{
+    font-size: 20px;
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+    width: 180px;
+    padding: 5px;
+    margin: 10px 0px 10px calc(50vw - 92.5px);
+    border-radius: 6px;
+    background-color: #5b3f86;
 }
