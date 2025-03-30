@@ -73,6 +73,8 @@ async function loaddata() {
                                 }
 
                         }
+
+                        document.getElementById("load").remove();
                     
                 });
 };

@@ -93,3 +93,55 @@ tr{
     border-radius: 6px;
     background-color: #5b3f86;
 }
+
+.loadingtxt{
+    font-size: 25px;
+    color: #000;
+    text-align: center;
+}
+
+#on{
+    display: inline-block;
+    background-color: #8a8;
+    animation-name: loadon;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    width: 0vw;
+    height: 20px;
+    margin-left: 10vw;
+}
+
+#off{
+    display: inline-block;
+    background-color: #282;
+    animation-name: loadoff;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    width: 80vw;
+    height: 20px;
+}
+
+@keyframes loadon{
+    0%{
+        width: 0vw;
+    }
+    50%{
+        width: 80vw;
+    }
+    100%{
+        width: 0vw;
+    }
+}
+@keyframes loadoff{
+    0%{
+        width: 80vw;
+    }
+    50%{
+        width: 0vw;
+    }
+    100%{
+        width: 80vw;
+    }
+}
