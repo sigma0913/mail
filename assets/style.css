@@ -68,17 +68,17 @@ h1{
 }
 
 td{
-    border-left: #000 1px dashed;
     padding: 3px;
     font-family: 'Noto Sans JP' 'Yu Gothic UI','ヒラギノ角ゴシック','Hiragino Sans',sans-serif;
 }
 
 tr{
+    border-bottom: #000 1px dashed;
     display: inline-block;
 }
 
-.tdtime{
-    border-left: #fff 0px solid;
+#col0{
+    border-bottom: #fff 0px solid;
 }
 
 .scbutton{
