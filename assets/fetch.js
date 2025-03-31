@@ -1,8 +1,8 @@
 console.clear();
-let times = ["　"];
-let whose = ["　"];
+let times = ["-----"];
+let whose = ["-----"];
 let notes = ["直近100件を読み込みます。"];
-const url = "https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLg32RcW3RJFpXyVTTqIC2toahSZKiraUxk7OrkPek5scuzWjen4rEMS6jzhvGl3wJMG9rgeHA9lyqwyB4p0UK2W2z4-gFihWd9wpbu82RmuJGotvOhEIsSomgvrk6OMyU2jeAEknj-Box8HGwIPkV8ke_Yi-WMvNCHxU-QbchoeDCmJMxA02Zd8VvUA-uhfv5-KUWoLoO_6_rnZfgLKPsBKJncd9buZPdUYdfmSJ_irNLTy1ICb1HtqFExoeplQpsyL9Qw3AploA9YW989FCQKmoXl1lykDfqYj-f_B&lib=MGMFwvEFybYZbEEwDgQ57nI-tcHohpwJB"
+const url = "https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLhN59uWjay-SZ1La_KATpTdw-5Y8NdL7RhGJ4r_P02-ScOn9sm8IQLmhVq1zn70W7v4uBlB4sAWR04aUVLxvmEM88lhU4fumYK2TOyQsTbQGsWmE5pIg1usejUwcBCl8eVRzkNjHmOH4OCnUnw4-VSuYb4q_koKOY0hjcHYUFRi5z98-YXJ3Q6zx-LaHmfxqvB-JJYnh9_6-kwhAutqCLS0sKDmV2ZN0qY_GruV_IEMljbA2mX2zr40FNnMpwEiH-i90XQjcyiOjpTiPlX4sbksI_R4mnOOOJGyT7sI&lib=MGMFwvEFybYZbEEwDgQ57nI-tcHohpwJB"
 const config = {
 //     method: "GET",
 //     mode: "no-cors",
