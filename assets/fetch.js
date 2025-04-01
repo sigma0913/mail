@@ -11,6 +11,8 @@ const config = {
 //     },
 }
 
+const stampstock = ["good","balloon","oyster_shell","BlueArchiveLogo_pass_izu792"];
+
 function loaddata() {
 
         fetch(url)
@@ -66,8 +68,14 @@ function loaddata() {
                                                 if (String(notes[i]).substring(0,7) == "/stamp/") {
                                                         let stamp = notes[i].slice(7);
                                                         console.log(stamp);
-                                                        textelem = document.createElement("img");
-                                                        textelem.setAttribute("src","./assets/stamps/" + stamp + ".png");
+                                                        console.log(stampstock.indexOf(stamp));
+                                                        console.log(stampstock);
+                                                        if (stampstock.indexOf(stamp) >= 0) {
+                                                                textelem = document.createElement("img");
+                                                                textelem.setAttribute("src","./assets/stamps/" + stamp + ".png");
+                                                        } else {
+                                                                textelem = document.createTextNode("スタンプの読み込みに失敗");
+                                                        }
                                                         childtdelem.appendChild(textelem);
                                                 } else {
                                                         String(notes[i]).split(/\n/).forEach(line => {
