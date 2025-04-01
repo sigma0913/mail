@@ -24,7 +24,7 @@ h1{
     position: fixed;
     width: 180px;
     height: 60px;
-    left: calc(100vw - 180px);
+    left: calc(100vw - 200px);
 }
 .buttons>a{
     display: inline-block;
@@ -49,7 +49,7 @@ h1{
     }
     .tdnote{
         display: inline-block;
-        width: calc(100vw - 214px);
+        width: calc(100vw - 224px);
     }
 }
 @media (min-width: 601px){
@@ -63,7 +63,7 @@ h1{
     }
     .tdnote{
         display: inline-block;
-        width: calc(100vw - 350px);
+        width: calc(100vw - 360px);
     }
 }
 

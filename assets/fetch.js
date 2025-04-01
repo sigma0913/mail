@@ -11,9 +11,7 @@ const config = {
 //     },
 }
 
-async function loaddata() {
-
-        const resp = await fetch(url,config);
+function loaddata() {
 
         fetch(url)
                 .then(response => response.json())
