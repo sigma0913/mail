@@ -62,12 +62,18 @@ async function loaddata() {
                                                 textelem = document.createTextNode(whose[i]);
                                                 childtdid = "tdwho";
                                         } else if (j == 2){
-                                                textelem = document.createTextNode(notes[i]);
                                                 childtdid = "tdnote";
+                                                if (String(notes[i]).substring(0,7) == "/stamp/") {
+                                                        let stamp = notes[i].slice(7);
+                                                        console.log(stamp);
+                                                        textelem = document.createElement("img");
+                                                        textelem.setAttribute("src","./assets/stamps/" + stamp + ".png");
+                                                } else {
+                                                        textelem = document.createTextNode(notes[i]);
+                                                }
                                         }
-
-                                        childtdelem.appendChild(textelem);
                                         childtdelem.setAttribute("class",childtdid);
+                                        childtdelem.appendChild(textelem);
                                         parenttr.appendChild(childtdelem);
 
                                 }

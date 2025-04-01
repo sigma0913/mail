@@ -145,3 +145,7 @@ tr{
         width: 80vw;
     }
 }
+img{
+    display: flex;
+    height: 60px;
+}
