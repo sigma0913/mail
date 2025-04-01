@@ -56,9 +56,11 @@ function loaddata() {
                                         if (j == 0){
                                                 textelem = document.createTextNode(times[i]);
                                                 childtdid = "tdtime";
+                                                childtdelem.appendChild(textelem);
                                         } else if (j == 1) {
                                                 textelem = document.createTextNode(whose[i]);
                                                 childtdid = "tdwho";
+                                                childtdelem.appendChild(textelem);
                                         } else if (j == 2){
                                                 childtdid = "tdnote";
                                                 if (String(notes[i]).substring(0,7) == "/stamp/") {
@@ -66,12 +68,16 @@ function loaddata() {
                                                         console.log(stamp);
                                                         textelem = document.createElement("img");
                                                         textelem.setAttribute("src","./assets/stamps/" + stamp + ".png");
+                                                        childtdelem.appendChild(textelem);
                                                 } else {
-                                                        textelem = document.createTextNode(notes[i]);
+                                                        String(notes[i]).split(/\n/).forEach(line => {
+                                                                console.log(line)
+                                                                childtdelem.appendChild(document.createTextNode(line));
+                                                                childtdelem.appendChild(document.createElement("br"));
+                                                        })
                                                 }
                                         }
                                         childtdelem.setAttribute("class",childtdid);
-                                        childtdelem.appendChild(textelem);
                                         parenttr.appendChild(childtdelem);
 
                                 }
