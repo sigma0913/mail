@@ -124,7 +124,7 @@ document.getElementById("refresh").addEventListener("click", () => {
                         }
                 });
 
-                if (times == aftimes) {
+                if (times[0] == aftimes[0]) {
                         console.log("doesn't changed");
                 } else {
                         for (let k = 0; k < times.length; k++) {
