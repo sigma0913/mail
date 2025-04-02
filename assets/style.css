@@ -76,12 +76,12 @@ td{
 }
 
 tr{
-    border-bottom: #000 1px dashed;
+    border-top: #000 1px dashed;
     display: inline-block;
 }
 
 #col0{
-    border-bottom: #fff 0px solid;
+    border-top: #fff 0px solid;
 }
 
 .scbutton{

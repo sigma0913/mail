@@ -2,7 +2,7 @@ console.clear();
 let times = ["-----"];
 let whose = ["-----"];
 let notes = ["直近100件を読み込みます。"];
-const url = "https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLimRj7p5AjDNQzfGwMIvTbfTUbLMOXMTtEfumKA1N1V-nhKKfzIaZ8PcyqCERdje0mmAjJOaDvOHl5J481lgW4gHMa_NRCoZfCyJ3KWFLmCBKtL6a9WExRWGjwPmcbEv0sSYhe1VR4lK5S0_M4kWhM4S8pxzc6zifFR8LZQRGXk1NQa2xMRMdbmpR1SCdTVxGfOJFO6ieUabAYN9r7R8KIkHOk1kBEVXkvlIF7G6FFyeb-7hN09KrBI6btVfFdRlwE7vz-jZ-OzPK4bKvyr-ui4tqlVi1gGr2C2SbR1&lib=MGMFwvEFybYZbEEwDgQ57nI-tcHohpwJB"
+const url = "https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLjShSm2KMHdpfDvWkbgRJC2dZyu-OpEsDRdrNq704rRVbOBh1-S5dQZfqyzAhidqDFYH15xhOrXz7n3q__ULkldhIzS6s1QKt-C1_7f5VNXnlgDkHCmPmmeDNGauGqeqofT5RD0D5Rw7aOWZHlYvwBUlGDP8EWIycRFUlqV7WRcqA3zHVUKRvMy1Bok_4Wpzv13vSch0mDcQStFAE1cxv6c4gOT2VJbi-nw9_S81Y_26d6o368ibiMDmkMBC--Y0il56Fm4dU15uwgyCMHwD8l5qbvVUEm_LhsrpJ1H&lib=MGMFwvEFybYZbEEwDgQ57nI-tcHohpwJB"
 const config = {
 //     method: "GET",
 //     mode: "no-cors",
@@ -43,7 +43,7 @@ function loaddata() {
                         let childtdid;
                         let parenttr;
 
-                        for (let i = times.length - 1; i > -1; i--) {
+                        for (let i = 0; i < times.length; i++) {
 
                                 parenttrelem = document.createElement("tr");
                                 parenttrelem.setAttribute("id","col" + String(i))
@@ -98,3 +98,7 @@ function loaddata() {
 };
 
 loaddata();
+
+setInterval(() => {
+
+}, 1000);
