@@ -1,7 +1,7 @@
 console.clear();
-let times = ["-----"];
-let whose = ["-----"];
-let notes = ["直近100件を読み込みます。"];
+let times = [];
+let whose = [];
+let notes = [];
 const url = "https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLjShSm2KMHdpfDvWkbgRJC2dZyu-OpEsDRdrNq704rRVbOBh1-S5dQZfqyzAhidqDFYH15xhOrXz7n3q__ULkldhIzS6s1QKt-C1_7f5VNXnlgDkHCmPmmeDNGauGqeqofT5RD0D5Rw7aOWZHlYvwBUlGDP8EWIycRFUlqV7WRcqA3zHVUKRvMy1Bok_4Wpzv13vSch0mDcQStFAE1cxv6c4gOT2VJbi-nw9_S81Y_26d6o368ibiMDmkMBC--Y0il56Fm4dU15uwgyCMHwD8l5qbvVUEm_LhsrpJ1H&lib=MGMFwvEFybYZbEEwDgQ57nI-tcHohpwJB"
 const config = {
 //     method: "GET",
