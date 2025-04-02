@@ -16,6 +16,7 @@ const stampstock = ["good","balloon","oyster_shell","BlueArchiveLogo_pass_izu792
 function loaddata() {
 
         fetch(url)
+
                 .then(response => response.json())
                 .then(data => {        
                         
@@ -98,7 +99,3 @@ function loaddata() {
 };
 
 loaddata();
-
-setInterval(() => {
-
-}, 1000);
