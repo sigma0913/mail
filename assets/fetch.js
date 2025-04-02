@@ -2,7 +2,7 @@ console.clear();
 let times = [];
 let whose = [];
 let notes = [];
-const url = "https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLjShSm2KMHdpfDvWkbgRJC2dZyu-OpEsDRdrNq704rRVbOBh1-S5dQZfqyzAhidqDFYH15xhOrXz7n3q__ULkldhIzS6s1QKt-C1_7f5VNXnlgDkHCmPmmeDNGauGqeqofT5RD0D5Rw7aOWZHlYvwBUlGDP8EWIycRFUlqV7WRcqA3zHVUKRvMy1Bok_4Wpzv13vSch0mDcQStFAE1cxv6c4gOT2VJbi-nw9_S81Y_26d6o368ibiMDmkMBC--Y0il56Fm4dU15uwgyCMHwD8l5qbvVUEm_LhsrpJ1H&lib=MGMFwvEFybYZbEEwDgQ57nI-tcHohpwJB"
+const url = "https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLgqLRw48fOtRxXIYYqMPK0mWkRJfPGyN1Ah0cnfSk1KpV5NbjaqbDki8R6oj7dDDFs0uYdL1_RNwvmpk411fPZYeiQ65pDAdi3pyG0YDu_lHH9ulfZuxKdK43cyoQaDGc5A5dQTheFGuDnsUsgTB7OiGKR8C1bsIgkI8EpxZgBZ6clzcgVNI165i7JsT-QiMK-P7wzpMeNXF2Oxi5f8MCfQWNUuvD_b_51KIPWQcN1jUFBQQTJdTrJMNGvmmFAlSitSSi_3YIGTIcXnrq96EHoUuW4RNJCAEtOakb8G&lib=MGMFwvEFybYZbEEwDgQ57nI-tcHohpwJB"
 const config = {
 //     method: "GET",
 //     mode: "no-cors",
@@ -10,6 +10,8 @@ const config = {
 //       "Content-Type": "application/x-www-form-urlencoded",
 //     },
 }
+
+let msgbefore;
 
 const stampstock = ["good","balloon","oyster_shell","BlueArchiveLogo_pass_izu792"];
 
@@ -20,6 +22,10 @@ function loaddata() {
                 .then(response => response.json())
                 .then(data => {        
                         
+                        times = [];
+                        whose = [];
+                        notes = [];
+
                         data.forEach(entry => {
                 
                                 const x = entry.time;
@@ -68,9 +74,6 @@ function loaddata() {
                                                 childtdid = "tdnote";
                                                 if (String(notes[i]).substring(0,7) == "/stamp/") {
                                                         let stamp = notes[i].slice(7);
-                                                        console.log(stamp);
-                                                        console.log(stampstock.indexOf(stamp));
-                                                        console.log(stampstock);
                                                         if (stampstock.indexOf(stamp) >= 0) {
                                                                 textelem = document.createElement("img");
                                                                 textelem.setAttribute("src","./assets/stamps/" + stamp + ".png");
@@ -80,7 +83,6 @@ function loaddata() {
                                                         childtdelem.appendChild(textelem);
                                                 } else {
                                                         String(notes[i]).split(/\n/).forEach(line => {
-                                                                console.log(line)
                                                                 childtdelem.appendChild(document.createTextNode(line));
                                                                 childtdelem.appendChild(document.createElement("br"));
                                                         })
@@ -88,14 +90,47 @@ function loaddata() {
                                         }
                                         childtdelem.setAttribute("class",childtdid);
                                         parenttr.appendChild(childtdelem);
-
                                 }
-
                         }
-
                         document.getElementById("load").remove();
-                    
                 });
+
 };
 
 loaddata();
+
+document.getElementById("refresh").addEventListener("click", () => {
+
+        let aftimes = [];
+        let afwhose = [];
+        let afnotes = [];
+
+        fetch(url)
+        .then(response => response.json())
+        .then(data => {        
+                
+                data.forEach(entry => {
+        
+                        const x = entry.time;
+                        const y = entry.who;
+                        const z = entry.note;
+                        
+                        if (y !== "" || z !== ""){
+
+                                aftimes.push(x);
+                                afwhose.push(y);
+                                afnotes.push(z);
+
+                        }
+                });
+
+                if (times == aftimes) {
+                        console.log("doesn't changed");
+                } else {
+                        for (let k = 0; k < times.length; k++) {
+                                document.getElementById("col" + k).remove();
+                        }       
+                        loaddata();
+                }
+        });
+});
