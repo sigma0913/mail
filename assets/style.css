@@ -41,9 +41,11 @@ h1{
 }
 .glaybutton{
     background-color: #444;
+    pointer-events: none;
 }
 .greenbutton{
     background-color: #2e7073;
+    pointer-events: all;
 }
 
 @media (max-width: 600px){
