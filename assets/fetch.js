@@ -105,7 +105,7 @@ function loaddata() {
                         document.getElementById("refresh").setAttribute("class","greenbutton");
                         reloadok = true;
                         if (aftimes !== undefined) {
-                                loadmsgboxelem.setAttribute("class","loadmsgboxblue");
+                                loadmsgboxelem.setAttribute("class","loadmsgboxblue msgbox");
                                 loadmsgelem.appendChild(document.createTextNode("新しいメッセージが届きました。"));
                                 loadmsgboxelem.appendChild(loadmsgelem);
                                 bodytag.appendChild(loadmsgboxelem);
@@ -120,10 +120,17 @@ loaddata();
 
 document.getElementById("refresh").addEventListener("click", () => {
 
+        console.log(document.getElementById("msgbox"));
+
+        if (document.getElementById("msgbox") !== null){
+                document.getElementById("msgbox").remove();
+        }
+
         loadmsgelem = "";
         loadmsgelem = document.createElement("p");
         loadmsgelem.setAttribute("class","loadmsgp");
         loadmsgboxelem = document.createElement("div");
+        loadmsgboxelem.setAttribute("id", "msgbox");
 
         if (reloadok) {
 
@@ -155,7 +162,7 @@ document.getElementById("refresh").addEventListener("click", () => {
                         });
 
                         if (times[0] == aftimes[0]) {
-                                loadmsgboxelem.setAttribute("class","loadmsgboxred");
+                                loadmsgboxelem.setAttribute("class","loadmsgboxred msgbox");
                                 document.getElementById("refresh").setAttribute("tabindex","1");
                                 document.getElementById("refresh").setAttribute("class","greenbutton");
                                 reloadok = true;
