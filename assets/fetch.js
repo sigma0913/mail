@@ -154,11 +154,7 @@ document.getElementById("refresh").addEventListener("click", () => {
                                 }
                         });
 
-                        console.log(times);
-                        console.log(aftimes);
-
                         if (times[0] == aftimes[0]) {
-                                console.log("doesn't changed");
                                 loadmsgboxelem.setAttribute("class","loadmsgboxred");
                                 document.getElementById("refresh").setAttribute("tabindex","1");
                                 document.getElementById("refresh").setAttribute("class","greenbutton");
@@ -166,7 +162,6 @@ document.getElementById("refresh").addEventListener("click", () => {
                                 loadmsgelem.appendChild(document.createTextNode("新しいメッセージはありません。"));
                                 loadmsgboxelem.appendChild(loadmsgelem)
                                 bodytag.appendChild(loadmsgboxelem);
-                                console.log("done?")
                         } else {
                                 for (let k = 0; k < times.length; k++) {
                                         document.getElementById("col" + k).remove();
