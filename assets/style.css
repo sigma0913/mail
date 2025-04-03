@@ -185,6 +185,7 @@ img{
     animation-timing-function: ease-in-out;
     text-align: center;
     vertical-align: middle;
+    color: #fff;
 }
 
 @keyframes boxinoutred{
