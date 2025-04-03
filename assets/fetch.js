@@ -2,6 +2,14 @@ console.clear();
 let times = [];
 let whose = [];
 let notes = [];
+let aftimes;
+let afwhose;
+let afnotes;
+let loadmsgelem;
+let loadmsgboxelem;
+
+let bodytag = document.getElementById("body");
+
 const url = "https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLgqLRw48fOtRxXIYYqMPK0mWkRJfPGyN1Ah0cnfSk1KpV5NbjaqbDki8R6oj7dDDFs0uYdL1_RNwvmpk411fPZYeiQ65pDAdi3pyG0YDu_lHH9ulfZuxKdK43cyoQaDGc5A5dQTheFGuDnsUsgTB7OiGKR8C1bsIgkI8EpxZgBZ6clzcgVNI165i7JsT-QiMK-P7wzpMeNXF2Oxi5f8MCfQWNUuvD_b_51KIPWQcN1jUFBQQTJdTrJMNGvmmFAlSitSSi_3YIGTIcXnrq96EHoUuW4RNJCAEtOakb8G&lib=MGMFwvEFybYZbEEwDgQ57nI-tcHohpwJB"
 const config = {
 //     method: "GET",
@@ -12,6 +20,7 @@ const config = {
 }
 
 let msgbefore;
+let reloadok = false;
 
 const stampstock = ["good","balloon","oyster_shell","BlueArchiveLogo_pass_izu792"];
 
@@ -92,7 +101,17 @@ function loaddata() {
                                         parenttr.appendChild(childtdelem);
                                 }
                         }
-                        document.getElementById("load").remove();
+                        document.getElementById("refresh").setAttribute("tabindex","1");
+                        document.getElementById("refresh").setAttribute("class","greenbutton");
+                        reloadok = true;
+                        if (aftimes !== undefined) {
+                                loadmsgboxelem.setAttribute("class","loadmsgboxblue");
+                                loadmsgelem.appendChild(document.createTextNode("新しいメッセージが届きました。"));
+                                loadmsgboxelem.appendChild(loadmsgelem);
+                                bodytag.appendChild(loadmsgboxelem);
+                        } else {
+                                document.getElementById("load").remove();
+                        }
                 });
 
 };
@@ -101,36 +120,59 @@ loaddata();
 
 document.getElementById("refresh").addEventListener("click", () => {
 
-        let aftimes = [];
-        let afwhose = [];
-        let afnotes = [];
+        loadmsgelem = "";
+        loadmsgelem = document.createElement("p");
+        loadmsgelem.setAttribute("class","loadmsgp");
+        loadmsgboxelem = document.createElement("div");
 
-        fetch(url)
-        .then(response => response.json())
-        .then(data => {        
-                
-                data.forEach(entry => {
-        
-                        const x = entry.time;
-                        const y = entry.who;
-                        const z = entry.note;
+        if (reloadok) {
+
+                reloadok = false;
+                document.getElementById("refresh").setAttribute("tabindex","-1");
+                document.getElementById("refresh").setAttribute("class","glaybutton");
+
+                aftimes = [];
+                afwhose = [];
+                afnotes = [];
+
+                fetch(url)
+                .then(response => response.json())
+                .then(data => {        
                         
-                        if (y !== "" || z !== ""){
+                        data.forEach(entry => {
+                
+                                const x = entry.time;
+                                const y = entry.who;
+                                const z = entry.note;
+                                
+                                if (y !== "" || z !== ""){
 
-                                aftimes.push(x);
-                                afwhose.push(y);
-                                afnotes.push(z);
+                                        aftimes.push(x);
+                                        afwhose.push(y);
+                                        afnotes.push(z);
 
+                                }
+                        });
+
+                        console.log(times);
+                        console.log(aftimes);
+
+                        if (times[0] == aftimes[0]) {
+                                console.log("doesn't changed");
+                                loadmsgboxelem.setAttribute("class","loadmsgboxred");
+                                document.getElementById("refresh").setAttribute("tabindex","1");
+                                document.getElementById("refresh").setAttribute("class","greenbutton");
+                                reloadok = true;
+                                loadmsgelem.appendChild(document.createTextNode("新しいメッセージはありません。"));
+                                loadmsgboxelem.appendChild(loadmsgelem)
+                                bodytag.appendChild(loadmsgboxelem);
+                                console.log("done?")
+                        } else {
+                                for (let k = 0; k < times.length; k++) {
+                                        document.getElementById("col" + k).remove();
+                                }       
+                                loaddata();
                         }
                 });
-
-                if (times[0] == aftimes[0]) {
-                        console.log("doesn't changed");
-                } else {
-                        for (let k = 0; k < times.length; k++) {
-                                document.getElementById("col" + k).remove();
-                        }       
-                        loaddata();
-                }
-        });
+        };
 });

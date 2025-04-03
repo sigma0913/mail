@@ -38,6 +38,11 @@ h1{
     height: 27px;
     padding: 5px;
     border-radius: 6px;
+}
+.glaybutton{
+    background-color: #444;
+}
+.greenbutton{
     background-color: #2e7073;
 }
 
@@ -151,4 +156,82 @@ tr{
 img{
     display: flex;
     height: 60px;
+}
+
+.loadmsgboxred{
+    animation-name: boxinoutred;
+    animation-duration: 3s;
+    animation-timing-function: ease-in-out;
+    position: fixed;
+    right: 20px;
+    height: 50px;
+    width: 200px;
+}
+.loadmsgboxblue{
+    animation-name: boxinoutblue;
+    animation-duration: 3s;
+    animation-timing-function: ease-in-out;
+    position: fixed;
+    right: 20px;
+    height: 50px;
+    width: 200px;
+
+}
+.loadmsgp{
+    animation-name: msginout;
+    animation-duration: 3s;
+    animation-timing-function: ease-in-out;
+    text-align: center;
+    vertical-align: middle;
+}
+
+@keyframes boxinoutred{
+    0%{
+        bottom: 0px;
+        background-color: rgba(255, 255, 255, 0);
+    }
+    10%{
+        bottom: 20px;
+        background-color: rgb(255, 192, 154);
+    }
+    90%{
+        bottom: 20px;
+        background-color: rgb(255, 192, 154);
+    }
+    100%{
+        bottom: 0px;
+        background-color: rgba(255, 255, 255, 0);
+    }
+}
+@keyframes boxinoutblue{
+    0%{
+        bottom: 0px;
+        background-color: rgba(255, 255, 255, 0);
+    }
+    10%{
+        bottom: 20px;
+        background-color: rgb(186, 202, 255);
+    }
+    90%{
+        bottom: 20px;
+        background-color: rgb(186, 202, 255);
+    }
+    100%{
+        bottom: 0px;
+        background-color: rgba(255, 255, 255, 0);
+    }
+}
+@keyframes msginout{
+    0%{
+        color: rgba(255, 255, 255, 0);
+    }
+    10%{
+        color: rgb(0, 0, 0);
+    }
+    90%{
+        color: rgb(0, 0, 0);
+    }
+    100%{
+        color: rgba(255, 255, 255, 0);
+    }
 }
