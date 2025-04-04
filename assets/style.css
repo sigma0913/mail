@@ -238,3 +238,25 @@ img{
         color: rgba(255, 255, 255, 0);
     }
 }
+
+#loadcircle{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    border: solid 5px;
+    position: fixed;
+    top: 10px;
+    left: calc(100vw - 250px);
+    border-color: #ffbb1e #faebe4 #faebe4;
+    animation: loadingspin 0.5s infinite ease-in-out;
+}
+
+@keyframes loadingspin {
+    to{
+        transform: rotate(360deg);
+    }    
+}
+
+.hidden{
+    display: none;
+}

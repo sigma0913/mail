@@ -44,7 +44,7 @@ function loaddata() {
                                 if (y !== "" || z !== ""){
 
                                         times.push(x);
-                                        whose.push(y);
+                                        whose.push(String(y).substring(0,8));
                                         notes.push(z);
 
                                 }
@@ -112,6 +112,8 @@ function loaddata() {
                         } else {
                                 document.getElementById("load").remove();
                         }
+
+                        document.getElementById("loadcircle").setAttribute("class","hidden");
                 });
 
 };
@@ -132,7 +134,9 @@ document.getElementById("refresh").addEventListener("click", () => {
         loadmsgboxelem = document.createElement("div");
         loadmsgboxelem.setAttribute("id", "msgbox");
 
-        if (reloadok) {
+        if (reloadok) {        
+                
+                document.getElementById("loadcircle").setAttribute("class","");
 
                 reloadok = false;
                 document.getElementById("refresh").setAttribute("tabindex","-1");
@@ -155,7 +159,7 @@ document.getElementById("refresh").addEventListener("click", () => {
                                 if (y !== "" || z !== ""){
 
                                         aftimes.push(x);
-                                        afwhose.push(y);
+                                        afwhose.push(String(y).substring(0,8));
                                         afnotes.push(z);
 
                                 }
@@ -169,6 +173,7 @@ document.getElementById("refresh").addEventListener("click", () => {
                                 loadmsgelem.appendChild(document.createTextNode("新しいメッセージはありません。"));
                                 loadmsgboxelem.appendChild(loadmsgelem)
                                 bodytag.appendChild(loadmsgboxelem);
+                                document.getElementById("loadcircle").setAttribute("class","hidden");
                         } else {
                                 for (let k = 0; k < times.length; k++) {
                                         document.getElementById("col" + k).remove();
