@@ -22,7 +22,7 @@ const config = {
 let msgbefore;
 let reloadok = false;
 
-const stampstock = ["good","balloon","oyster_shell","html","css","javascript","BlueArchiveLogo_pass_izu792"];
+const stampstock = ["good","balloon","oyster_shell","html","css","javascript","tenkaicon","tenkalogo","BlueArchiveLogo_pass_izu792"];
 
 function loaddata() {
 
