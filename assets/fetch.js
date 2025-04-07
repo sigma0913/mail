@@ -47,7 +47,7 @@ function loaddata() {
                                 if (y !== "" || z !== ""){
 
                                         times.push(x);
-                                        whose.push(String(y).substring(0,12));
+                                        whose.push(String(y));
                                         notes.push(z);
 
                                 }
@@ -80,9 +80,12 @@ function loaddata() {
                                                 childtdelem.appendChild(textelem);
                                         } else if (j == 1) {
                                                 for (let l = 0; l < username.length; l++) {
-                                                        if (username[l].indexOf(whose[i]) > -1) {
+                                                        if (whose[i].split(/\//)[0].indexOf(username[l]) > -1) {
+                                                                console.log(String(i) + ": before : " + userpass[l]);
+                                                                console.log(String(i) + ": " + whose[i]);
                                                                 if (userpass[l] == whose[i]) {
                                                                         textelem = document.createTextNode(username[l]);
+                                                                        console.log(username[l]);
                                                                         break;
                                                                 } else {
                                                                         textelem = document.createTextNode(username[l] + "の偽物");
@@ -91,7 +94,8 @@ function loaddata() {
                                                                 }
                                                         }
                                                         if (l == username.length - 1) {
-                                                                textelem = document.createTextNode(whose[i]);
+                                                                console.log(String(i) + ": afret : " + whose[i]);
+                                                                textelem = document.createTextNode(String(whose[i]).substring(0,12));
                                                         }
                                                 }
                                                 childtdid = "tdwho";
