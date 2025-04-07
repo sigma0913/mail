@@ -48,32 +48,32 @@ h1{
     pointer-events: all;
 }
 
-@media (max-width: 600px){
+@media (max-width: 700px){
     .tdtime{
         display: inline-block;
         width: 95px;
     }
     .tdwho{
         display: inline-block;
-        width: 95px;
+        width: calc(100vw - 101px - 25px);
     }
     .tdnote{
         display: inline-block;
-        width: calc(100vw - 224px);
+        width: calc(100vw - 25px);
     }
 }
-@media (min-width: 601px){
+@media (min-width: 701px){
     .tdtime{
         display: inline-block;
         width: 160px;
     }
     .tdwho{
         display: inline-block;
-        width: 160px;
+        width: 200px;
     }
     .tdnote{
         display: inline-block;
-        width: calc(100vw - 360px);
+        width: calc(100vw - 400px);
     }
 }
 
