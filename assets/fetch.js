@@ -8,6 +8,13 @@ let afnotes;
 let loadmsgelem;
 let loadmsgboxelem;
 
+const aletter = ["а","ａ","ɑ","A","Α","А","Α","Ａ","Ꭺ","𖽀","ᗅ","ꓮ"];
+const gletter = ["ｇ","ɡ","ց","G","Ԍ","Ｇ","Ꮐ","ꓖ"];
+const iletter = ["ｉ","і","ⅰ","¡","Ꭵ","וֹ","I","Ι","Ι","𐢉","Ӏ","Ⅰ","Ｉ","І","ӏ","⏽","ߊ","꣎","l","|"];
+const mletter = ["ⅿ","ｍ","Μ","M","М","Ꮇ","Μ","Ｍ","𝖬","ꓟ","ꤵ"];
+const sletter = ["ѕ","ｓ","𐑈","ꮪ","ꜱ","᥉","S","Ѕ","Ჽ","𐍃","ꓢ","Ｓ","Ꮪ","Տ","ჽ","𖼺","Ꚃ","𖫖"];
+
+
 const username = ["sigma"];
 const userpass = ["sigma/17291268"];
 
@@ -47,7 +54,16 @@ function loaddata() {
                                 if (y !== "" || z !== ""){
 
                                         times.push(x);
-                                        whose.push(String(y));
+                                        let yend = ""
+                                        let yarr = String(y).split("");
+                                        for (let yloop = 0; yloop < yarr.length; yloop++) {
+                                                yend = String(yend) + String(aletter.indexOf(yarr[yloop]) < 0 ? "" : "a"); 
+                                                yend = String(yend) + String(gletter.indexOf(yarr[yloop]) < 0 ? "" : "g"); 
+                                                yend = String(yend) + String(iletter.indexOf(yarr[yloop]) < 0 ? "" : "i");
+                                                yend = String(yend) + String(mletter.indexOf(yarr[yloop]) < 0 ? "" : "m");
+                                                yend = String(yend) + String(sletter.indexOf(yarr[yloop]) < 0 ? yarr[yloop] : "s");
+                                        }
+                                        whose.push(String(yend));
                                         notes.push(z);
 
                                 }
@@ -80,12 +96,11 @@ function loaddata() {
                                                 childtdelem.appendChild(textelem);
                                         } else if (j == 1) {
                                                 for (let l = 0; l < username.length; l++) {
+                                                        console.log(whose[i].split(/\//)[0]);
+                                                        console.log(whose[i].split(/\//)[0].indexOf(username[l]))
                                                         if (whose[i].split(/\//)[0].indexOf(username[l]) > -1) {
-                                                                console.log(String(i) + ": before : " + userpass[l]);
-                                                                console.log(String(i) + ": " + whose[i]);
                                                                 if (userpass[l] == whose[i]) {
                                                                         textelem = document.createTextNode(username[l]);
-                                                                        console.log(username[l]);
                                                                         break;
                                                                 } else {
                                                                         textelem = document.createTextNode(username[l] + "の偽物");
@@ -94,7 +109,6 @@ function loaddata() {
                                                                 }
                                                         }
                                                         if (l == username.length - 1) {
-                                                                console.log(String(i) + ": afret : " + whose[i]);
                                                                 textelem = document.createTextNode(String(whose[i]).substring(0,12));
                                                         }
                                                 }
