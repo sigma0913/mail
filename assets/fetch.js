@@ -8,6 +8,9 @@ let afnotes;
 let loadmsgelem;
 let loadmsgboxelem;
 
+const username = ["sigma"];
+const userpass = ["sigma/17291268"];
+
 let bodytag = document.getElementById("body");
 
 const url = "https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLgqLRw48fOtRxXIYYqMPK0mWkRJfPGyN1Ah0cnfSk1KpV5NbjaqbDki8R6oj7dDDFs0uYdL1_RNwvmpk411fPZYeiQ65pDAdi3pyG0YDu_lHH9ulfZuxKdK43cyoQaDGc5A5dQTheFGuDnsUsgTB7OiGKR8C1bsIgkI8EpxZgBZ6clzcgVNI165i7JsT-QiMK-P7wzpMeNXF2Oxi5f8MCfQWNUuvD_b_51KIPWQcN1jUFBQQTJdTrJMNGvmmFAlSitSSi_3YIGTIcXnrq96EHoUuW4RNJCAEtOakb8G&lib=MGMFwvEFybYZbEEwDgQ57nI-tcHohpwJB"
@@ -44,7 +47,7 @@ function loaddata() {
                                 if (y !== "" || z !== ""){
 
                                         times.push(x);
-                                        whose.push(String(y).substring(0,8));
+                                        whose.push(String(y).substring(0,12));
                                         notes.push(z);
 
                                 }
@@ -76,7 +79,21 @@ function loaddata() {
                                                 childtdid = "tdtime";
                                                 childtdelem.appendChild(textelem);
                                         } else if (j == 1) {
-                                                textelem = document.createTextNode(whose[i]);
+                                                for (let l = 0; l < username.length; l++) {
+                                                        if (username[l].indexOf(whose[i]) > -1) {
+                                                                if (userpass[l] == whose[i]) {
+                                                                        textelem = document.createTextNode(username[l]);
+                                                                        break;
+                                                                } else {
+                                                                        textelem = document.createTextNode(username[l] + "の偽物");
+                                                                        childtdelem.setAttribute("style","color: red;");
+                                                                        break;
+                                                                }
+                                                        }
+                                                        if (l == username.length - 1) {
+                                                                textelem = document.createTextNode(whose[i]);
+                                                        }
+                                                }
                                                 childtdid = "tdwho";
                                                 childtdelem.appendChild(textelem);
                                         } else if (j == 2){
