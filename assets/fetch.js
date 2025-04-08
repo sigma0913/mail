@@ -110,6 +110,7 @@ function loaddata() {
                                                 if (username.indexOf(whose[i].split(/\//)[0]) > -1) {
                                                         if (userpass[username.indexOf(whose[i].split(/\//)[0])] == whose[i]) {
                                                                 textelem = document.createTextNode(username[username.indexOf(whose[i].split(/\//)[0])]);
+                                                                childtdelem.setAttribute("style","color: #44c;");
                                                         } else {
                                                                 textelem = document.createTextNode(username[username.indexOf(whose[i].split(/\//)[0])] + "の偽物");
                                                                 childtdelem.setAttribute("style","color: red;");
