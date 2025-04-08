@@ -107,7 +107,6 @@ function loaddata() {
                                                 childtdid = "tdtime";
                                                 childtdelem.appendChild(textelem);
                                         } else if (j == 1) {
-                                                console.log(username.indexOf(whose[i].split(/\//)[0]));
                                                 if (username.indexOf(whose[i].split(/\//)[0]) > -1) {
                                                         if (userpass[username.indexOf(whose[i].split(/\//)[0])] == whose[i]) {
                                                                 textelem = document.createTextNode(username[username.indexOf(whose[i].split(/\//)[0])]);
