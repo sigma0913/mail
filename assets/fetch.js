@@ -8,10 +8,12 @@ let afnotes;
 let loadmsgelem;
 let loadmsgboxelem;
 
+const blankletter = [" ","　"]
 const aletter = ["а","ａ","ɑ","A","Α","А","Α","Ａ","Ꭺ","𖽀","ᗅ","ꓮ"];
 const gletter = ["ｇ","ɡ","ց","G","Ԍ","Ｇ","Ꮐ","ꓖ"];
 const iletter = ["ｉ","і","ⅰ","¡","Ꭵ","וֹ","I","Ι","Ι","𐢉","Ӏ","Ⅰ","Ｉ","І","ӏ","⏽","ߊ","꣎","l","|"];
 const mletter = ["ⅿ","ｍ","Μ","M","М","Ꮇ","Μ","Ｍ","𝖬","ꓟ","ꤵ"];
+const nletter = ["ｎ","ᥒ","𝘯","𝑛","𝗇","𝗻","𝙣","𝒏","𝐧","ո","𝚗"];
 const sletter = ["ѕ","ｓ","𐑈","ꮪ","ꜱ","᥉","S","Ѕ","Ჽ","𐍃","ꓢ","Ｓ","Ꮪ","Տ","ჽ","𖼺","Ꚃ","𖫖"];
 const tletter = ["ｔ","ʈ","𝘵","𝒕","𝗍","𝐭","𖼹"];
 const largetletter = ["Т","Τ","Ｔ","𐊗","𐊱","𐤯","Ꭲ","𖼊","𑢼","ߠ","ꓔ","𑫝","𐨝","𐝇","𖩋","𐍄"];
@@ -63,7 +65,15 @@ function loaddata() {
                                                 yend = String(yend) + String(gletter.indexOf(yarr[yloop]) < 0 ? "" : "g"); 
                                                 yend = String(yend) + String(iletter.indexOf(yarr[yloop]) < 0 ? "" : "i");
                                                 yend = String(yend) + String(mletter.indexOf(yarr[yloop]) < 0 ? "" : "m");
-                                                yend = String(yend) + String(sletter.indexOf(yarr[yloop]) < 0 ? yarr[yloop] : "s");
+                                                yend = String(yend) + String(nletter.indexOf(yarr[yloop]) < 0 ? "" : "n");
+                                                yend = String(yend) + String(sletter.indexOf(yarr[yloop]) < 0 ? "" : "s");
+                                                yend = String(yend) + String(tletter.indexOf(yarr[yloop]) < 0 ? "" : "t");
+                                                yend = String(yend) + String(largetletter.indexOf(yarr[yloop]) < 0 ? "" : "T");
+                                                if (String(yend.length) == String(yloop)) {
+                                                        if (blankletter.indexOf(yarr[yloop]) < 0) {
+                                                                yend = String(yend) + yarr[yloop];
+                                                        }
+                                                }
                                         }
                                         whose.push(String(yend));
                                         notes.push(z);
@@ -97,22 +107,16 @@ function loaddata() {
                                                 childtdid = "tdtime";
                                                 childtdelem.appendChild(textelem);
                                         } else if (j == 1) {
-                                                for (let l = 0; l < username.length; l++) {
-                                                        console.log(whose[i].split(/\//)[0]);
-                                                        console.log(whose[i].split(/\//)[0].indexOf(username[l]))
-                                                        if (whose[i].split(/\//)[0].indexOf(username[l]) > -1) {
-                                                                if (userpass[l] == whose[i]) {
-                                                                        textelem = document.createTextNode(username[l]);
-                                                                        break;
-                                                                } else {
-                                                                        textelem = document.createTextNode(username[l] + "の偽物");
-                                                                        childtdelem.setAttribute("style","color: red;");
-                                                                        break;
-                                                                }
+                                                console.log(username.indexOf(whose[i].split(/\//)[0]));
+                                                if (username.indexOf(whose[i].split(/\//)[0]) > -1) {
+                                                        if (userpass[username.indexOf(whose[i].split(/\//)[0])] == whose[i]) {
+                                                                textelem = document.createTextNode(username[username.indexOf(whose[i].split(/\//)[0])]);
+                                                        } else {
+                                                                textelem = document.createTextNode(username[username.indexOf(whose[i].split(/\//)[0])] + "の偽物");
+                                                                childtdelem.setAttribute("style","color: red;");
                                                         }
-                                                        if (l == username.length - 1) {
-                                                                textelem = document.createTextNode(String(whose[i]).substring(0,12));
-                                                        }
+                                                } else {
+                                                        textelem = document.createTextNode(String(whose[i]).substring(0,12));
                                                 }
                                                 childtdid = "tdwho";
                                                 childtdelem.appendChild(textelem);
@@ -158,8 +162,6 @@ function loaddata() {
 loaddata();
 
 document.getElementById("refresh").addEventListener("click", () => {
-
-        console.log(document.getElementById("msgbox"));
 
         if (document.getElementById("msgbox") !== null){
                 document.getElementById("msgbox").remove();
