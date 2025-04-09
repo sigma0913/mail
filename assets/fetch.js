@@ -19,8 +19,8 @@ const tletter = ["ｔ","ʈ","𝘵","𝒕","𝗍","𝐭","𖼹"];
 const largetletter = ["Т","Τ","Ｔ","𐊗","𐊱","𐤯","Ꭲ","𖼊","𑢼","ߠ","ꓔ","𑫝","𐨝","𐝇","𖩋","𐍄"];
 
 
-const username = ["sigma","Tanatana792"];
-const userpass = ["sigma/17291268","Tanatana792/206"];
+const username = ["sigma","Tanatana792","Usuharu1189"];
+const userpass = ["sigma/17291268","Tanatana792/206","Usuharu1189/1016"];
 
 let bodytag = document.getElementById("body");
 
