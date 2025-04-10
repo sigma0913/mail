@@ -199,7 +199,7 @@ document.getElementById("refresh").addEventListener("click", () => {
                         if (!response.ok) {
                                 throw new error ("読み込みに失敗");
                         }
-                        response.json()
+                        return response.json()
                 })
                 .then(data => {        
                         
