@@ -9,7 +9,8 @@ let loadmsgelem;
 let loadmsgboxelem;
 
 const blankletter = [" ","　"," "," "," "," "," "," "," "," "," "," "," "," "," "," "," ","　","	"," ","ᅟ","ᅠ",""]
-const aletter = ["а","ａ","ɑ","A","Α","А","Α","Ａ","Ꭺ","𖽀","ᗅ","ꓮ"];
+const aletter = ["а","ａ","ɑ"];
+const largealetter = ["A","Α","А","Α","Ａ","Ꭺ","𖽀","ᗅ","ꓮ"]
 const gletter = ["ｇ","ɡ","ց","G","Ԍ","Ｇ","Ꮐ","ꓖ"];
 const iletter = ["ｉ","і","ⅰ","¡","Ꭵ","וֹ","I","Ι","Ι","𐢉","Ӏ","Ⅰ","Ｉ","І","ӏ","⏽","ߊ","꣎","l","|"];
 const mletter = ["ⅿ","ｍ","Μ","M","М","Ꮇ","Μ","Ｍ","𝖬","ꓟ","ꤵ"];
@@ -19,8 +20,8 @@ const tletter = ["ｔ","ʈ","𝘵","𝒕","𝗍","𝐭","𖼹"];
 const largetletter = ["Т","Τ","Ｔ","𐊗","𐊱","𐤯","Ꭲ","𖼊","𑢼","ߠ","ꓔ","𑫝","𐨝","𐝇","𖩋","𐍄"];
 
 
-const username = ["sigma","Tanatana792","Usuharu1189"];
-const userpass = ["sigma/17291268","Tanatana792/206","Usuharu1189/1016"];
+const username = ["sigma","Tanatana792","Usuharu1189","AKT"];
+const userpass = ["sigma/17291268","Tanatana792/206","Usuharu1189/1016","AKT/980665"];
 
 let bodytag = document.getElementById("body");
 
@@ -41,121 +42,129 @@ const stampstock = ["good","balloon","oyster_shell","html","css","javascript","t
 function loaddata() {
 
         fetch(url)
-
-                .then(response => response.json())
-                .then(data => {        
-                        
-                        times = [];
-                        whose = [];
-                        notes = [];
-
-                        data.forEach(entry => {
+        .then(response => {
+                if (!response.ok){
+                        throw new error("Could NOT load data");
+                }
+                return response.json()
+        })
+        .then(data => {        
                 
-                                const x = entry.time;
-                                const y = entry.who;
-                                const z = entry.note;
-                                
-                                if (y !== "" || z !== ""){
+                times = [];
+                whose = [];
+                notes = [];
 
-                                        times.push(x);
-                                        let yend = ""
-                                        let yarr = String(y).split("");
-                                        for (let yloop = 0; yloop < yarr.length; yloop++) {
-                                                yend = String(yend) + String(aletter.indexOf(yarr[yloop]) < 0 ? "" : "a"); 
-                                                yend = String(yend) + String(gletter.indexOf(yarr[yloop]) < 0 ? "" : "g"); 
-                                                yend = String(yend) + String(iletter.indexOf(yarr[yloop]) < 0 ? "" : "i");
-                                                yend = String(yend) + String(mletter.indexOf(yarr[yloop]) < 0 ? "" : "m");
-                                                yend = String(yend) + String(nletter.indexOf(yarr[yloop]) < 0 ? "" : "n");
-                                                yend = String(yend) + String(sletter.indexOf(yarr[yloop]) < 0 ? "" : "s");
-                                                yend = String(yend) + String(tletter.indexOf(yarr[yloop]) < 0 ? "" : "t");
-                                                yend = String(yend) + String(largetletter.indexOf(yarr[yloop]) < 0 ? "" : "T");
-                                                if (String(yend.length) == String(yloop)) {
-                                                        if (blankletter.indexOf(yarr[yloop]) < 0) {
-                                                                yend = String(yend) + yarr[yloop];
-                                                        }
+                data.forEach(entry => {
+        
+                        const x = entry.time;
+                        const y = entry.who;
+                        const z = entry.note;
+                        
+                        if (y !== "" || z !== ""){
+
+                                times.push(x);
+                                let yend = ""
+                                let yarr = String(y).split("");
+                                for (let yloop = 0; yloop < yarr.length; yloop++) {
+                                        yend = String(yend) + String(aletter.indexOf(yarr[yloop]) < 0 ? "" : "a"); 
+                                        yend = String(yend) + String(largealetter.indexOf(yarr[yloop]) < 0 ? "" : "A"); 
+                                        yend = String(yend) + String(gletter.indexOf(yarr[yloop]) < 0 ? "" : "g"); 
+                                        yend = String(yend) + String(iletter.indexOf(yarr[yloop]) < 0 ? "" : "i");
+                                        yend = String(yend) + String(mletter.indexOf(yarr[yloop]) < 0 ? "" : "m");
+                                        yend = String(yend) + String(nletter.indexOf(yarr[yloop]) < 0 ? "" : "n");
+                                        yend = String(yend) + String(sletter.indexOf(yarr[yloop]) < 0 ? "" : "s");
+                                        yend = String(yend) + String(tletter.indexOf(yarr[yloop]) < 0 ? "" : "t");
+                                        yend = String(yend) + String(largetletter.indexOf(yarr[yloop]) < 0 ? "" : "T");
+                                        if (String(yend.length) == String(yloop)) {
+                                                if (blankletter.indexOf(yarr[yloop]) < 0) {
+                                                        yend = String(yend) + yarr[yloop];
                                                 }
                                         }
-                                        whose.push(String(yend));
-                                        notes.push(z);
-
                                 }
+                                whose.push(String(yend));
+                                notes.push(z);
 
-                        });
-
-                        const table = document.getElementById("msgtable");
-
-                        let parenttrelem;
-                        let childtdelem;
-                        let textelem;
-                        let childtdid;
-                        let parenttr;
-
-                        for (let i = 0; i < times.length; i++) {
-
-                                parenttrelem = document.createElement("tr");
-                                parenttrelem.setAttribute("id","col" + String(i))
-                                table.appendChild(parenttrelem);
-
-                                parenttr = document.getElementById("col" + String(i))
-
-                                for (let j = 0; j < 3; j++) {
-
-                                        childtdelem = document.createElement("td");
-
-                                        if (j == 0){
-                                                textelem = document.createTextNode(times[i]);
-                                                childtdid = "tdtime";
-                                                childtdelem.appendChild(textelem);
-                                        } else if (j == 1) {
-                                                if (username.indexOf(whose[i].split(/\//)[0]) > -1) {
-                                                        if (userpass[username.indexOf(whose[i].split(/\//)[0])] == whose[i]) {
-                                                                textelem = document.createTextNode(username[username.indexOf(whose[i].split(/\//)[0])]);
-                                                                childtdelem.setAttribute("style","color: #44c;");
-                                                        } else {
-                                                                textelem = document.createTextNode(username[username.indexOf(whose[i].split(/\//)[0])] + "の偽物");
-                                                                childtdelem.setAttribute("style","color: red;");
-                                                        }
-                                                } else {
-                                                        textelem = document.createTextNode(String(whose[i]).substring(0,12));
-                                                }
-                                                childtdid = "tdwho";
-                                                childtdelem.appendChild(textelem);
-                                        } else if (j == 2){
-                                                childtdid = "tdnote";
-                                                if (String(notes[i]).substring(0,7) == "/stamp/") {
-                                                        let stamp = notes[i].slice(7);
-                                                        if (stampstock.indexOf(stamp) >= 0) {
-                                                                textelem = document.createElement("img");
-                                                                textelem.setAttribute("src","./assets/stamps/" + stamp + ".png");
-                                                        } else {
-                                                                textelem = document.createTextNode("スタンプの読み込みに失敗");
-                                                        }
-                                                        childtdelem.appendChild(textelem);
-                                                } else {
-                                                        String(notes[i]).split(/\n/).forEach(line => {
-                                                                childtdelem.appendChild(document.createTextNode(line));
-                                                                childtdelem.appendChild(document.createElement("br"));
-                                                        })
-                                                }
-                                        }
-                                        childtdelem.setAttribute("class",childtdid);
-                                        parenttr.appendChild(childtdelem);
-                                }
-                        }
-                        document.getElementById("refresh").setAttribute("tabindex","1");
-                        document.getElementById("refresh").setAttribute("class","greenbutton");
-                        reloadok = true;
-                        if (aftimes !== undefined) {
-                                loadmsgboxelem.setAttribute("class","loadmsgboxblue msgbox");
-                                loadmsgelem.appendChild(document.createTextNode("新しいメッセージが届きました。"));
-                                loadmsgboxelem.appendChild(loadmsgelem);
-                                bodytag.appendChild(loadmsgboxelem);
-                        } else {
-                                document.getElementById("load").remove();
                         }
 
-                        document.getElementById("loadcircle").setAttribute("class","hidden");
                 });
+
+                const table = document.getElementById("msgtable");
+
+                let parenttrelem;
+                let childtdelem;
+                let textelem;
+                let childtdid;
+                let parenttr;
+
+                for (let i = 0; i < times.length; i++) {
+
+                        parenttrelem = document.createElement("tr");
+                        parenttrelem.setAttribute("id","col" + String(i))
+                        table.appendChild(parenttrelem);
+
+                        parenttr = document.getElementById("col" + String(i))
+
+                        for (let j = 0; j < 3; j++) {
+
+                                childtdelem = document.createElement("td");
+
+                                if (j == 0){
+                                        textelem = document.createTextNode(times[i]);
+                                        childtdid = "tdtime";
+                                        childtdelem.appendChild(textelem);
+                                } else if (j == 1) {
+                                        if (username.indexOf(whose[i].split(/\//)[0]) > -1) {
+                                                if (userpass[username.indexOf(whose[i].split(/\//)[0])] == whose[i]) {
+                                                        textelem = document.createTextNode(username[username.indexOf(whose[i].split(/\//)[0])]);
+                                                        childtdelem.setAttribute("style","color: #44c;");
+                                                } else {
+                                                        textelem = document.createTextNode(username[username.indexOf(whose[i].split(/\//)[0])] + "の偽物");
+                                                        childtdelem.setAttribute("style","color: red;");
+                                                }
+                                        } else {
+                                                textelem = document.createTextNode(String(whose[i]).substring(0,12));
+                                        }
+                                        childtdid = "tdwho";
+                                        childtdelem.appendChild(textelem);
+                                } else if (j == 2){
+                                        childtdid = "tdnote";
+                                        if (String(notes[i]).substring(0,7) == "/stamp/") {
+                                                let stamp = notes[i].slice(7);
+                                                if (stampstock.indexOf(stamp) >= 0) {
+                                                        textelem = document.createElement("img");
+                                                        textelem.setAttribute("src","./assets/stamps/" + stamp + ".png");
+                                                } else {
+                                                        textelem = document.createTextNode("スタンプの読み込みに失敗");
+                                                }
+                                                childtdelem.appendChild(textelem);
+                                        } else {
+                                                String(notes[i]).split(/\n/).forEach(line => {
+                                                        childtdelem.appendChild(document.createTextNode(line));
+                                                        childtdelem.appendChild(document.createElement("br"));
+                                                })
+                                        }
+                                }
+                                childtdelem.setAttribute("class",childtdid);
+                                parenttr.appendChild(childtdelem);
+                        }
+                }
+                document.getElementById("refresh").setAttribute("tabindex","1");
+                document.getElementById("refresh").setAttribute("class","greenbutton");
+                reloadok = true;
+                if (aftimes !== undefined) {
+                        loadmsgboxelem.setAttribute("class","loadmsgboxblue msgbox");
+                        loadmsgelem.appendChild(document.createTextNode("新しいメッセージが届きました。"));
+                        loadmsgboxelem.appendChild(loadmsgelem);
+                        bodytag.appendChild(loadmsgboxelem);
+                } else {
+                        document.getElementById("load").remove();
+                }
+
+                document.getElementById("loadcircle").setAttribute("class","hidden");
+        })
+        .catch (e => {
+                console.error(e);
+        })
 
 };
 
@@ -186,7 +195,12 @@ document.getElementById("refresh").addEventListener("click", () => {
                 afnotes = [];
 
                 fetch(url)
-                .then(response => response.json())
+                .then(response => {
+                        if (!response.ok) {
+                                throw new error ("読み込みに失敗");
+                        }
+                        response.json()
+                })
                 .then(data => {        
                         
                         data.forEach(entry => {
@@ -219,6 +233,9 @@ document.getElementById("refresh").addEventListener("click", () => {
                                 }       
                                 loaddata();
                         }
-                });
+                })
+                .catch(e => {
+                        console.error(e)
+                })
         };
 });
