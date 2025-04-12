@@ -13,6 +13,7 @@ header{
     position: fixed;
     border-bottom: 1px solid #000;
     background-color: #cec;
+    z-index: 10;
 }
 .blank{
     height: 60px;
@@ -23,12 +24,14 @@ h1{
     margin:10px;
     width: 65px;
     display: inline-block;
+    z-index: 12;
 }
 .buttons{
     position: fixed;
     width: 180px;
     height: 60px;
     left: calc(100vw - 200px);
+    z-index: 11;
 }
 .buttons>a{
     display: inline-block;
@@ -39,6 +42,7 @@ h1{
     height: 27px;
     padding: 5px;
     border-radius: 6px;
+    z-index: 13;
 }
 .glaybutton{
     background-color: #444;
@@ -259,4 +263,32 @@ img{
 
 .hidden{
     display: none;
+}
+
+video{
+    display: inline-block;
+    width: 60vw;
+    border: none;
+    filter: drop-shadow(0px 0px rgba(0,0,0,0));
+    outline: none;
+    border: none;
+    z-index: -1;
+}
+.videotitle{
+    display: inline-block;
+    vertical-align: top;
+    font-size: 20px;
+    margin: 5px 10px;
+}
+.dlbutton{
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 20px;
+    text-align: center;
+    text-decoration: none;
+    width: 140px;
+    padding: 5px 10px;
+    left: 100px;
+    background-color: #2e7073;
+    color: #fff;
 }
