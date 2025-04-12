@@ -276,20 +276,36 @@ video{
 }
 .videotitle{
     display: inline-block;
-    vertical-align: top;
+    vertical-align: text-top;
     font-size: 20px;
     margin: 5px 10px;
+    padding-bottom: calc((60vw * 9 / 16) - 82px);
+    width: calc(40vw - 40px);
 }
 .dlbutton{
     display: inline-block;
-    vertical-align: middle;
-    font-size: 20px;
+    vertical-align: text-bottom;
     text-align: center;
+    font-size: 20px;
     text-decoration: none;
     width: 140px;
     padding: 5px 10px;
-    left: 100px;
+    margin-left: calc(20vw - 80px);
     background-color: #2e7073;
     color: #fff;
     border-radius: 6px;
+    white-space: none;
+}
+.videotable{
+    padding: 0px;
+    margin: 0px;
+}
+.videotr{
+    border-bottom: #000 solid 2px;
+    padding: 10px 0px;
+    margin: 0px;
+}
+.videotd{
+    padding: 0px;
+    margin: 0px;
 }
