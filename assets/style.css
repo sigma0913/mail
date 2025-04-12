@@ -302,6 +302,7 @@ video{
 }
 .videotr{
     border-bottom: #000 solid 2px;
+    border-top: none;
     padding: 10px 0px;
     margin: 0px;
 }
