@@ -143,20 +143,21 @@ function loaddata() {
                                         } else {
                                                 String(notes[i]).split(/\n/).forEach(line => {
                                                         String(line).split(/\s/).forEach(space => {
-                                                                console.log("space = " + space);
-                                                                console.log("match = " + String(space).search(/https:\/\//));
-
+                                                                let atagbefore;
                                                                 let atag;
 
-                                                                if (Number(String(space).search(/http:\/\//)) == 0) {
+                                                                if (Number(String(space).search(/http:\/\//)) >= 0) {
+                                                                        atagbefore = document.createTextNode(String(space).slice(0,String(space).search(/http:\/\//)));
                                                                         atag = document.createElement("a");
-                                                                        atag.setAttribute("href",space);
-                                                                        atag.appendChild(document.createTextNode(space));
-                                                                } else if (Number(String(space).search(/https:\/\//)) == 0) {
-                                                                        console.log("atagmatched")
+                                                                        atag.setAttribute("href",String(space.slice(String(space).search(/http:\/\//),space.length)));
+                                                                        atag.appendChild(document.createTextNode(space.slice(String(space).search(/http:\/\//),space.length)));
+                                                                        childtdelem.appendChild(atagbefore);
+                                                                } else if (Number(String(space).search(/https:\/\//)) >= 0) {
+                                                                        atagbefore = document.createTextNode(String(space).slice(0,String(space).search(/https:\/\//)));
                                                                         atag = document.createElement("a");
-                                                                        atag.setAttribute("href",space);
-                                                                        atag.appendChild(document.createTextNode(space));
+                                                                        atag.setAttribute("href",space.slice(String(space).search(/https:\/\//),space.length));
+                                                                        atag.appendChild(document.createTextNode(space.slice(String(space).search(/https:\/\//),space.length)));
+                                                                        childtdelem.appendChild(atagbefore);
                                                                 } else {
                                                                         atag = document.createTextNode(space + " ");
                                                                 }
