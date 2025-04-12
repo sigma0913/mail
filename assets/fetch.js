@@ -142,7 +142,26 @@ function loaddata() {
                                                 childtdelem.appendChild(textelem);
                                         } else {
                                                 String(notes[i]).split(/\n/).forEach(line => {
-                                                        childtdelem.appendChild(document.createTextNode(line));
+                                                        String(line).split(/\s/).forEach(space => {
+                                                                console.log("space = " + space);
+                                                                console.log("match = " + String(space).search(/https:\/\//));
+
+                                                                let atag;
+
+                                                                if (Number(String(space).search(/http:\/\//)) == 0) {
+                                                                        atag = document.createElement("a");
+                                                                        atag.setAttribute("href",space);
+                                                                        atag.appendChild(document.createTextNode(space));
+                                                                } else if (Number(String(space).search(/https:\/\//)) == 0) {
+                                                                        console.log("atagmatched")
+                                                                        atag = document.createElement("a");
+                                                                        atag.setAttribute("href",space);
+                                                                        atag.appendChild(document.createTextNode(space));
+                                                                } else {
+                                                                        atag = document.createTextNode(space + " ");
+                                                                }
+                                                                childtdelem.appendChild(atag);
+                                                        })
                                                         childtdelem.appendChild(document.createElement("br"));
                                                 })
                                         }
