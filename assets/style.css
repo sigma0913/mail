@@ -171,7 +171,7 @@ img{
     position: fixed;
     right: 20px;
     height: 50px;
-    width: 200px;
+    width: 270px;
 }
 .loadmsgboxblue{
     animation-name: boxinoutblue;
@@ -180,7 +180,7 @@ img{
     position: fixed;
     right: 20px;
     height: 50px;
-    width: 200px;
+    width: 270px;
 
 }
 .loadmsgp{
@@ -253,6 +253,7 @@ img{
     left: calc(100vw - 250px);
     border-color: #ffbb1e #faebe4 #faebe4;
     animation: loadingspin 0.5s infinite ease-in-out;
+    z-index: 16;
 }
 
 @keyframes loadingspin {
