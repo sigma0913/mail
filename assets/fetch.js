@@ -142,7 +142,7 @@ function loaddata() {
                                                 childtdelem.appendChild(textelem);
                                         } else {
                                                 String(notes[i]).split(/\n/).forEach(line => {
-                                                        String(line).split(/\s/).forEach(space => {
+                                                        String(line).split(/ /).forEach(space => {
                                                                 let atagbefore;
                                                                 let atag;
 
