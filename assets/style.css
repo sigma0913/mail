@@ -266,16 +266,17 @@ img{
     display: none;
 }
 
-video{
+.dlpreview{
     display: inline-block;
     width: 60vw;
+    height: auto;
     border: none;
     filter: drop-shadow(0px 0px rgba(0,0,0,0));
     outline: none;
     border: none;
     z-index: -1;
 }
-.videotitle{
+.dltitle{
     display: inline-block;
     vertical-align: text-top;
     font-size: 20px;
@@ -297,17 +298,17 @@ video{
     border-radius: 6px;
     white-space: none;
 }
-.videotable{
+.dltable{
     padding: 0px;
     margin: 0px;
 }
-.videotr{
+.dltr{
     border-bottom: #000 solid 2px;
     border-top: none;
     padding: 10px 0px;
     margin: 0px;
 }
-.videotd{
+.dltd{
     padding: 0px;
     margin: 0px;
 }
