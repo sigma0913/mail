@@ -282,7 +282,7 @@ img{
     font-size: 20px;
     margin: 5px 10px;
     padding-bottom: calc((60vw * 9 / 16) - 82px);
-    width: calc(40vw - 40px);
+    width: calc(40vw - 50px);
 }
 .dlbutton{
     display: inline-block;
@@ -292,7 +292,7 @@ img{
     text-decoration: none;
     width: 140px;
     padding: 5px 10px;
-    margin-left: calc(20vw - 80px);
+    margin-left: calc(20vw - 90px);
     background-color: #2e7073;
     color: #fff;
     border-radius: 6px;
