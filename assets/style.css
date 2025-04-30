@@ -57,10 +57,12 @@ h1{
     .tdtime{
         display: inline-block;
         width: 95px;
+        background-color:#ccc;
     }
     .tdwho{
         display: inline-block;
         width: calc(100vw - 101px - 25px);
+        background-color:#ccc;
     }
     .tdnote{
         display: inline-block;
@@ -71,10 +73,12 @@ h1{
     .tdtime{
         display: inline-block;
         width: 160px;
+        background-color:#fff;
     }
     .tdwho{
         display: inline-block;
         width: 200px;
+        background-color:#fff;
     }
     .tdnote{
         display: inline-block;
