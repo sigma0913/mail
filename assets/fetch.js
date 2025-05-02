@@ -22,6 +22,8 @@ const largetletter = ["Т","Τ","Ｔ","𐊗","𐊱","𐤯","Ꭲ","𖼊","𑢼","
 
 const username = ["sigma","Tanatana792","Usuharu1189","AKT"];
 const userpass = ["sigma/17291268","Tanatana792/206","Usuharu1189/1016","299792458"];
+const noslashusername = ["AKT","3年めーぐみ33番 ぐー"]
+const noslashuserpass = ["299792458","生牡蠣"]
 
 let bodytag = document.getElementById("body");
 
@@ -113,8 +115,8 @@ function loaddata() {
                                         childtdid = "tdtime";
                                         childtdelem.appendChild(textelem);
                                 } else if (j == 1) {
-                                        if (whose[i] == "299792458") {
-                                                textelem = document.createTextNode("AKT");
+                                        if (noslashuserpass.indexOf(String(whose[i])) > -1) {
+                                                textelem = document.createTextNode(noslashusername[noslashuserpass.indexOf(String(whose[i]))]);
                                                 childtdelem.setAttribute("style","color: #44c;");
                                         } else if (username.indexOf(whose[i].split(/\//)[0]) > -1) {
                                                 if (userpass[username.indexOf(whose[i].split(/\//)[0])] == whose[i]) {
