@@ -22,8 +22,8 @@ const largetletter = ["Т","Τ","Ｔ","𐊗","𐊱","𐤯","Ꭲ","𖼊","𑢼","
 
 const username = ["sigma","Tanatana792","Usuharu1189","AKT"];
 const userpass = ["sigma/17291268","Tanatana792/206","Usuharu1189/1016","299792458"];
-const noslashusername = ["AKT","3年めーぐみ33番 ぐー","3年めーぐみ33番 ぐー","sigma","Tanatana792","Usuharu1189"]
-const noslashuserpass = ["299792458","生牡蠣","なまがき","17291268","206","1016"]
+const noslashusername = ["AKT","3年めーぐみ33番 ぐー","3年めーぐみ33番 ぐー","sigma","Tanatana792","Usuharu1189","Moto Miharu","Moto Miharu"]
+const noslashuserpass = ["299792458","生牡蠣","なまがき","17291268","206","1016","み","ぬ"]
 
 let bodytag = document.getElementById("body");
 
