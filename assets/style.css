@@ -9,7 +9,7 @@ body{
 
 header{
     height: 60px;
-    width: 100vw;
+    width: 100%;
     position: fixed;
     border-bottom: 1px solid #000;
     background-color: #cec;
@@ -55,26 +55,37 @@ h1{
 
 td{
     padding: 3px;
+    box-sizing: border-box;
+}
+
+table{
+    width: 100%;
+    box-sizing: border-box;
 }
 
 tr{
     border-top: #000 1px dashed;
     display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 @media (max-width: 700px){
     .tdtime{
         display: inline-block;
-        width: 95px;
+        width: 110px;
+        box-sizing: border-box;
     }
     .tdwho{
         display: inline-block;
-        width: calc(100vw - 101px - 25px);
+        width: calc(100% - 120px);
+        box-sizing: border-box;
     }
     .tdnote{
         display: inline-block;
-        width: calc(100vw - 25px);
+        width: calc(100%);
         background-color:#eee;
+        box-sizing: border-box;
     }
     tr{
         border-top: #000 2px solid;
@@ -84,15 +95,18 @@ tr{
     .tdtime{
         display: inline-block;
         width: 160px;
+        box-sizing: border-box;
     }
     .tdwho{
         display: inline-block;
         width: 200px;
+        box-sizing: border-box;
     }
     .tdnote{
         display: inline-block;
-        width: calc(100vw - 400px);
+        width: calc(100vw - 360px);
         background-color:#fff;
+        box-sizing: border-box;
     }
 }
 
