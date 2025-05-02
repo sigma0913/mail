@@ -177,6 +177,7 @@ function loaddata() {
                 }
                 document.getElementById("refresh").setAttribute("tabindex","1");
                 document.getElementById("refresh").setAttribute("class","greenbutton");
+                document.getElementById("loadcheck").removeAttribute("disabled");
                 reloadok = true;
                 if (aftimes !== undefined) {
                         loadmsgboxelem.setAttribute("class","loadmsgboxblue msgbox");
@@ -197,6 +198,8 @@ function loaddata() {
 
 loaddata();
 
+
+
 document.getElementById("refresh").addEventListener("click", () => {
 
         if (document.getElementById("msgbox") !== null){
@@ -216,6 +219,7 @@ document.getElementById("refresh").addEventListener("click", () => {
                 reloadok = false;
                 document.getElementById("refresh").setAttribute("tabindex","-1");
                 document.getElementById("refresh").setAttribute("class","glaybutton");
+                document.getElementById("loadcheck").setAttribute("disabled","");
 
                 aftimes = [];
                 afwhose = [];
@@ -249,6 +253,7 @@ document.getElementById("refresh").addEventListener("click", () => {
                                 loadmsgboxelem.setAttribute("class","loadmsgboxred msgbox");
                                 document.getElementById("refresh").setAttribute("tabindex","1");
                                 document.getElementById("refresh").setAttribute("class","greenbutton");
+                                document.getElementById("loadcheck").removeAttribute("disabled");
                                 reloadok = true;
                                 loadmsgelem.appendChild(document.createTextNode("新しいメッセージはありません。"));
                                 loadmsgboxelem.appendChild(loadmsgelem)
@@ -266,3 +271,74 @@ document.getElementById("refresh").addEventListener("click", () => {
                 })
         };
 });
+
+let loadwas = 0;
+
+setInterval(() => {
+        
+        if (document.getElementById("loadcheck").checked) {
+                if (loadwas == 0) {
+                        document.getElementById("refresh").setAttribute("tabindex","-1");
+                        document.getElementById("refresh").setAttribute("class","glaybutton");
+                        loadwas = 1;
+                }
+                
+                if (document.getElementById("msgbox") !== null){
+                        document.getElementById("msgbox").remove();
+                }
+        
+                if (reloadok) {        
+                        reloadok = false;
+                        document.getElementById("refresh").setAttribute("tabindex","-1");
+                        document.getElementById("refresh").setAttribute("class","glaybutton");
+        
+                        aftimes = [];
+                        afwhose = [];
+                        afnotes = [];
+        
+                        fetch(url)
+                        .then(response => {
+                                if (!response.ok) {
+                                        throw new error ("読み込みに失敗");
+                                }
+                                return response.json()
+                        })
+                        .then(data => {        
+                                
+                                data.forEach(entry => {
+                        
+                                        const x = entry.time;
+                                        const y = entry.who;
+                                        const z = entry.note;
+                                        
+                                        if (y !== "" || z !== ""){
+        
+                                                aftimes.push(x);
+                                                afwhose.push(String(y).substring(0,8));
+                                                afnotes.push(z);
+        
+                                        }
+                                });
+        
+                                if (times[0] !== aftimes[0]) {
+                                        for (let k = 0; k < times.length; k++) {
+                                                document.getElementById("col" + k).remove();
+                                        }       
+                                        loaddata();
+                                } else {
+                                        reloadok = true;
+                                }
+                        })
+                        .catch(e => {
+                                console.error(e)
+                        })
+                };
+        } else {
+                if (loadwas == 1) {
+                        document.getElementById("refresh").setAttribute("tabindex","1");
+                        document.getElementById("refresh").setAttribute("class","greenbutton");
+                        loadwas = 0;
+                        reloadok = true;
+                }
+        }
+}, 50);
