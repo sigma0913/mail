@@ -342,3 +342,34 @@ setInterval(() => {
                 }
         }
 }, 50);
+
+let visible = false;
+document.getElementById("hammenu").addEventListener("click", () => {
+        viewtoggle();
+}, false)
+document.getElementById("menuback").addEventListener("click", () => {
+        viewclose();
+})
+document.getElementById("loginbutton").addEventListener("click", function(e) {
+        e.stopPropagation();
+        document.getElementById("loginmenu").style.display = "inline-block";
+})
+document.getElementById("menuframe").addEventListener("click", function(e) {
+        e.stopPropagation();
+})
+
+function viewtoggle(){
+        if (visible){
+                viewclose();
+        } else {
+                document.getElementById("menuback").style.display = "inline-block";
+                console.log("did");
+                visible = true;
+        }
+}
+function viewclose(){
+        document.getElementById("menuback").style.display = "none";
+        document.getElementById("loginmenu").style.display = "none";
+        console.log("did");
+        visible = false;
+}

@@ -63,6 +63,15 @@ h1{
     z-index: 20;
 }
 
+#hammenu{
+    display: inline-block;
+    position: fixed;
+    left: calc(100vw - 70px);
+    top: 10px;
+    height: 40px;
+    z-index: 100;
+}
+
 td{
     padding: 3px;
     box-sizing: border-box;
@@ -340,4 +349,61 @@ img{
 .dltd{
     padding: 0px;
     margin: 0px;
+}
+
+/* ============================================ */
+/* ====================menu==================== */
+/* ============================================ */
+
+#menuback{
+    background-color: rgba(0,0,0,0.6);
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    z-index: 99;
+}
+#menuframe{
+    background-color: #fff;
+    border-radius: 3vw;
+    height: 80%;
+    width: 90%;
+    position: fixed;
+    z-index: 101;
+    left: 5%;
+    top: 10%;
+    pointer-events: all;
+}
+#loginmenu{
+    background-color: #fff;
+    border-radius: 3vw;
+    height: 80%;
+    width: 90%;
+    position: fixed;
+    z-index: 102;
+    left: 5%;
+    top: 10%;
+}
+#menuframe>div{
+    height: calc(100% / 3);
+    border-bottom: #000 solid 1px;
+}
+#menuframe>#loginbutton{
+    border-bottom: #fff solid 0px;
+}
+
+.menubutton{
+    display: inline-block;
+    position: absolute;
+    font-size: 20px;
+    text-align: center;
+    vertical-align: middle;
+    width: 250px;
+    height: 40px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #2e7073;
+    border-radius: 6px;
+    left: calc(50% - 125px);
+    margin-top: calc(80vh / 6 - 20px);
+    cursor: pointer;
 }

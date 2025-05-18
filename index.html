@@ -15,14 +15,36 @@
     <div class="buttons">
         <a href="https://forms.gle/tbsSd1qvwtn73NT98" target="blank" class="greenbutton">投稿</a>
         <a href="##" id="refresh" class="glaybutton">更新</a>
-        <a href="https://sigma0913.github.io/mail/info/" class="greenbutton">Info</a>
     </div>
+    <img src="./assets/images/hamburgermenu.png" alt="メニュー" id="hammenu">
     <div id="loadcheckbox">
         <label for="loadcheck">自動更新</label>
         <input type="checkbox" id="loadcheck" name="autoload" value="automode" disabled>
     </div>
     <div id="loadcircle"></div>
     <div class="blank"></div>
+    <div id="menuback" style="display: none;">
+        <div id="menuframe">
+            <div>
+                <a href="https://sigma0913.github.io/mail/info/" class="menubutton">Infoページ</a>
+            </div>
+            <div>
+                <a href="https://sigma0913.github.io/mail/download" class="menubutton">ダウンロードページ</a>
+            </div>
+            <div id="loginbutton">
+                <p class="menubutton">ログイン/ログアウト</p>
+            </div>
+        </div>
+    </div>
+    <div id="loginmenu" style="display: none;">
+        <label for="name">ユーザー名</label>
+        <input type="text" id="loginname" name="name">
+        <label for="pass">パスワード</label>
+        <input type="password" id="loginpass" name="pass">
+        <p class="login">ログイン</p>
+        <p class="logout">ログアウト</p>
+        <p style="font-size: 30px;">(未実装)</p>
+    </div>
     <table id="msgtable"></table>
     <div id="load">
         <p class="loadingtxt">読み込み中</p>
