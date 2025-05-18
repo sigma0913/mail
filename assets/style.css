@@ -382,6 +382,8 @@ img{
     z-index: 102;
     left: 5%;
     top: 10%;
+    font-size: 20px;
+    text-align: center;
 }
 #menuframe>div{
     height: calc(100% / 3);
@@ -406,4 +408,33 @@ img{
     left: calc(50% - 125px);
     margin-top: calc(80vh / 6 - 20px);
     cursor: pointer;
+}
+
+#loginnameframe{
+    margin-top: 30px;
+}
+#loginpassframe{
+    margin-top: 30px;
+}
+.inputtext{
+    height: 30px;
+    border: 0px;
+    border-bottom: 2px #aaa solid;
+    font-size: 20px;
+}
+.inputtext:focus{
+    outline: 0;
+    border: 0px;
+    border-bottom: 2px #444 solid;
+}
+.loginout{
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 6px;
+    color: #fff;
+    margin: 20px;
+    height: 40px;
+    width: 120px;
+    text-align: center;
+    background-color: #2e7073;
 }

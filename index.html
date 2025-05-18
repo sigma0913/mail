@@ -37,12 +37,16 @@
         </div>
     </div>
     <div id="loginmenu" style="display: none;">
-        <label for="name">ユーザー名</label>
-        <input type="text" id="loginname" name="name">
-        <label for="pass">パスワード</label>
-        <input type="password" id="loginpass" name="pass">
-        <p class="login">ログイン</p>
-        <p class="logout">ログアウト</p>
+        <div id="loginnameframe">
+            <label for="name" id="loginnamelabel">ユーザー名</label>
+            <input type="text" id="loginname" name="name" class="inputtext">
+        </div>
+        <div id="loginpassframe">
+            <label for="pass" id="loginpasslabel">パスワード</label>
+            <input type="password" id="loginpass" name="pass" class="inputtext">
+        </div>
+        <p class="loginout" id="logininput">ログイン</p>
+        <p class="loginout" id="logoutinput">ログアウト</p>
         <p style="font-size: 30px;">(未実装)</p>
     </div>
     <table id="msgtable"></table>
