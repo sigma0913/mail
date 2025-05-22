@@ -10,6 +10,8 @@ let loadmsgboxelem;
 
 let loginuser = "";
 
+console.log(document.cookie);
+
 const blankletter = [" ","　"," "," "," "," "," "," "," "," "," "," "," "," "," "," "," ","　","	"," ","ᅟ","ᅠ",""]
 const aletter = ["а","ａ","ɑ"];
 const largealetter = ["A","Α","А","Α","Ａ","Ꭺ","𖽀","ᗅ","ꓮ"]
