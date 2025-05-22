@@ -362,6 +362,7 @@ document.getElementById("menuback").addEventListener("click", () => {
 });
 document.getElementById("loginbutton").addEventListener("click", function(e) {
         e.stopPropagation();
+        sendok = true;
         document.getElementById("loginmenu").style.display = "inline-block";
 });
 document.getElementById("menuframe").addEventListener("click", function(e) {
@@ -391,8 +392,7 @@ document.getElementById("logininput").addEventListener("click", () => {
         loginfunc();
 });
 
-function loginfunc() {        
-        sendok = true;
+function loginfunc() {
         let namein = document.getElementById("loginname").value;
         let passin = document.getElementById("loginpass").value;
 
@@ -435,10 +435,7 @@ document.getElementById("loginname").addEventListener("keydown", function(event)
 });
 
 document.getElementById("loginpass").addEventListener("keydown", function(event) {
-        console.log("test1");
-        console.log(event.key);
-        if (event.key === "Enter") {
-                console.log("test2");
+        if (event.key === "Enter" && sendok) {
                 loginfunc();
         };
 });
