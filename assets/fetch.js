@@ -10,7 +10,7 @@ let loadmsgboxelem;
 let user = "";
 
 if (document.cookie != "") {
-        user = document.cookie.substr(15);
+        user = document.cookie.substr(16);
         if (user == "") {
                 document.getElementById("loginwho").innerText = "未ログイン";
         } else {
