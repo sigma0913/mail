@@ -39,15 +39,15 @@
     <div id="loginmenu" style="display: none;">
         <div id="loginnameframe">
             <label for="name" id="loginnamelabel">ユーザー名</label>
-            <input type="text" id="loginname" name="name" class="inputtext">
+            <input type="text" id="loginname" name="name" class="inputtext" autocomplete="on">
         </div>
         <div id="loginpassframe">
             <label for="pass" id="loginpasslabel">パスワード</label>
-            <input type="password" id="loginpass" name="pass" class="inputtext">
+            <input type="password" id="loginpass" name="pass" class="inputtext" autocomplete="on">
         </div>
         <p class="loginout" id="logininput">ログイン</p>
         <p class="loginout" id="logoutinput">ログアウト</p>
-        <p style="font-size: 30px;">(未実装)</p>
+        <p style="font-size: 30px;" id="loginwho">未ログイン</p>
     </div>
     <table id="msgtable"></table>
     <div id="load">

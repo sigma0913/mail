@@ -8,6 +8,8 @@ let afnotes;
 let loadmsgelem;
 let loadmsgboxelem;
 
+let loginuser = "";
+
 const blankletter = [" ","　"," "," "," "," "," "," "," "," "," "," "," "," "," "," "," ","　","	"," ","ᅟ","ᅠ",""]
 const aletter = ["а","ａ","ɑ"];
 const largealetter = ["A","Α","А","Α","Ａ","Ꭺ","𖽀","ᗅ","ꓮ"]
@@ -373,3 +375,27 @@ function viewclose(){
         console.log("did");
         visible = false;
 }
+
+document.getElementById("logininput").addEventListener("click", () => {
+        let namein = document.getElementById("loginname").value;
+        let passin = document.getElementById("loginpass").value;
+
+        let nameisok = noslashusername.indexOf(namein);
+
+        if (nameisok >= 0) {
+                if (passin == noslashuserpass[nameisok]) {
+                        document.cookie = 'usernamelogined=' + namein;
+                        console.log("loginok");
+                        console.log(document.cookie);
+                        document.getElementById("loginwho").innerText = namein;
+                        document.getElementById("loginname").value = "";
+                        document.getElementById("loginpass").value = "";
+
+                } else {
+                        document.getElementById("loginwho").innerText = "ログイン失敗";
+                }
+        } else {
+                console.log("no such as user");
+        }
+})
+
