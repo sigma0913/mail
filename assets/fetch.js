@@ -402,9 +402,11 @@ document.getElementById("logininput").addEventListener("click", () => {
 
                 } else {
                         document.getElementById("loginwho").innerText = "ログイン失敗";
+                        console.log(document.cookie);
                 }
         } else {
-                console.log("no such as user");
+                document.getElementById("loginwho").innerText = "ログイン失敗";
+                console.log(document.cookie);
         }
 })
 
@@ -412,4 +414,5 @@ document.getElementById("logoutinput").addEventListener("click", () => {
         user = "";
         document.cookie = 'usernamelogined='
         document.getElementById("loginwho").innerText = "未ログイン";
+        console.log(document.cookie);
 })
