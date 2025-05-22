@@ -7,10 +7,16 @@ let afwhose;
 let afnotes;
 let loadmsgelem;
 let loadmsgboxelem;
+let user = "";
 
-let loginuser = "";
-
-console.log(document.cookie);
+if (document.cookie != "") {
+        user = document.cookie.substr(15);
+        if (user == "") {
+                document.getElementById("loginwho").innerText = "未ログイン";
+        } else {
+                document.getElementById("loginwho").innerText = "ログイン中：" + namein;
+        }
+}
 
 const blankletter = [" ","　"," "," "," "," "," "," "," "," "," "," "," "," "," "," "," ","　","	"," ","ᅟ","ᅠ",""]
 const aletter = ["а","ａ","ɑ"];
@@ -386,10 +392,11 @@ document.getElementById("logininput").addEventListener("click", () => {
 
         if (nameisok >= 0) {
                 if (passin == noslashuserpass[nameisok]) {
+                        
                         document.cookie = 'usernamelogined=' + namein;
                         console.log("loginok");
                         console.log(document.cookie);
-                        document.getElementById("loginwho").innerText = namein;
+                        document.getElementById("loginwho").innerText = "ログイン中：" + namein;
                         document.getElementById("loginname").value = "";
                         document.getElementById("loginpass").value = "";
 
