@@ -44,7 +44,7 @@ const config = {
 //     headers: {
 //       "Content-Type": "application/x-www-form-urlencoded",
 //     },
-}
+};
 
 let msgbefore;
 let reloadok = false;
@@ -58,7 +58,7 @@ function loaddata() {
                 if (!response.ok){
                         throw new error("Could NOT load data");
                 }
-                return response.json()
+                return response.json();
         })
         .then(data => {        
                 
@@ -135,10 +135,10 @@ function loaddata() {
                                                 } else {
                                                         textelem = document.createTextNode(username[username.indexOf(whose[i].split(/\//)[0])] + "の偽物");
                                                         childtdelem.setAttribute("style","color: red;");
-                                                }
+                                                };
                                         } else {
                                                 textelem = document.createTextNode(String(whose[i]).substring(0,12));
-                                        }
+                                        };
                                         childtdid = "tdwho";
                                         childtdelem.appendChild(textelem);
                                 } else if (j == 2){
@@ -150,7 +150,7 @@ function loaddata() {
                                                         textelem.setAttribute("src","./assets/stamps/" + stamp + ".png");
                                                 } else {
                                                         textelem = document.createTextNode("スタンプの読み込みに失敗");
-                                                }
+                                                };
                                                 childtdelem.appendChild(textelem);
                                         } else {
                                                 String(notes[i]).split(/\n/).forEach(line => {
@@ -174,17 +174,17 @@ function loaddata() {
                                                                         childtdelem.appendChild(atagbefore);
                                                                 } else {
                                                                         atag = document.createTextNode(space + " ");
-                                                                }
+                                                                };
                                                                 childtdelem.appendChild(atag);
-                                                        })
+                                                        });
                                                         childtdelem.appendChild(document.createElement("br"));
-                                                })
-                                        }
-                                }
+                                                });
+                                        };
+                                };
                                 childtdelem.setAttribute("class",childtdid);
                                 parenttr.appendChild(childtdelem);
-                        }
-                }
+                        };
+                };
                 document.getElementById("refresh").setAttribute("tabindex","1");
                 document.getElementById("refresh").setAttribute("class","greenbutton");
                 document.getElementById("loadcheck").removeAttribute("disabled");
@@ -196,13 +196,13 @@ function loaddata() {
                         bodytag.appendChild(loadmsgboxelem);
                 } else {
                         document.getElementById("load").remove();
-                }
+                };
 
                 document.getElementById("loadcircle").setAttribute("class","hidden");
         })
         .catch (e => {
                 console.error(e);
-        })
+        });
 
 };
 
@@ -214,7 +214,7 @@ document.getElementById("refresh").addEventListener("click", () => {
 
         if (document.getElementById("msgbox") !== null){
                 document.getElementById("msgbox").remove();
-        }
+        };
 
         loadmsgelem = "";
         loadmsgelem = document.createElement("p");
@@ -240,7 +240,7 @@ document.getElementById("refresh").addEventListener("click", () => {
                         if (!response.ok) {
                                 throw new error ("読み込みに失敗");
                         }
-                        return response.json()
+                        return response.json();
                 })
                 .then(data => {        
                         
@@ -256,7 +256,7 @@ document.getElementById("refresh").addEventListener("click", () => {
                                         afwhose.push(String(y).substring(0,8));
                                         afnotes.push(z);
 
-                                }
+                                };
                         });
 
                         if (times[0] == aftimes[0]) {
@@ -274,11 +274,11 @@ document.getElementById("refresh").addEventListener("click", () => {
                                         document.getElementById("col" + k).remove();
                                 }       
                                 loaddata();
-                        }
+                        };
                 })
                 .catch(e => {
                         console.error(e)
-                })
+                });
         };
 });
 
@@ -291,11 +291,11 @@ setInterval(() => {
                         document.getElementById("refresh").setAttribute("tabindex","-1");
                         document.getElementById("refresh").setAttribute("class","glaybutton");
                         loadwas = 1;
-                }
+                };
                 
                 if (document.getElementById("msgbox") !== null){
                         document.getElementById("msgbox").remove();
-                }
+                };
         
                 if (reloadok) {        
                         reloadok = false;
@@ -310,8 +310,8 @@ setInterval(() => {
                         .then(response => {
                                 if (!response.ok) {
                                         throw new error ("読み込みに失敗");
-                                }
-                                return response.json()
+                                };
+                                return response.json();
                         })
                         .then(data => {        
                                 
@@ -327,21 +327,21 @@ setInterval(() => {
                                                 afwhose.push(String(y).substring(0,8));
                                                 afnotes.push(z);
         
-                                        }
+                                        };
                                 });
         
                                 if (times[0] !== aftimes[0]) {
                                         for (let k = 0; k < times.length; k++) {
                                                 document.getElementById("col" + k).remove();
-                                        }       
+                                        };
                                         loaddata();
                                 } else {
                                         reloadok = true;
-                                }
+                                };
                         })
                         .catch(e => {
                                 console.error(e)
-                        })
+                        });
                 };
         } else {
                 if (loadwas == 1) {
@@ -349,24 +349,24 @@ setInterval(() => {
                         document.getElementById("refresh").setAttribute("class","greenbutton");
                         loadwas = 0;
                         reloadok = true;
-                }
-        }
+                };
+        };
 }, 50);
 
 let visible = false;
 document.getElementById("hammenu").addEventListener("click", () => {
         viewtoggle();
-}, false)
+});
 document.getElementById("menuback").addEventListener("click", () => {
         viewclose();
-})
+});
 document.getElementById("loginbutton").addEventListener("click", function(e) {
         e.stopPropagation();
         document.getElementById("loginmenu").style.display = "inline-block";
-})
+});
 document.getElementById("menuframe").addEventListener("click", function(e) {
         e.stopPropagation();
-})
+});
 
 function viewtoggle(){
         if (visible){
@@ -375,16 +375,24 @@ function viewtoggle(){
                 document.getElementById("menuback").style.display = "inline-block";
                 console.log("did");
                 visible = true;
-        }
-}
+        };
+};
 function viewclose(){
         document.getElementById("menuback").style.display = "none";
         document.getElementById("loginmenu").style.display = "none";
         console.log("did");
         visible = false;
-}
+        sendok = false;
+};
+
+let sendok = false;
 
 document.getElementById("logininput").addEventListener("click", () => {
+        loginfunc();
+});
+
+function loginfunc() {        
+        sendok = true;
         let namein = document.getElementById("loginname").value;
         let passin = document.getElementById("loginpass").value;
 
@@ -403,12 +411,12 @@ document.getElementById("logininput").addEventListener("click", () => {
                 } else {
                         document.getElementById("loginwho").innerText = "ログイン失敗";
                         console.log(document.cookie);
-                }
+                };
         } else {
                 document.getElementById("loginwho").innerText = "ログイン失敗";
                 console.log(document.cookie);
-        }
-})
+        };
+};
 
 document.getElementById("logoutinput").addEventListener("click", () => {
         user = "";
@@ -417,4 +425,20 @@ document.getElementById("logoutinput").addEventListener("click", () => {
         console.log(document.cookie);
         document.getElementById("loginname").value = "";
         document.getElementById("loginpass").value = "";
-})
+});
+
+document.getElementById("loginname").addEventListener("keydown", function(event) {
+        console.log("down");
+        if (event.key === "Enter" && sendok) {
+                loginfunc();
+        };
+});
+
+document.getElementById("loginpass").addEventListener("keydown", function(event) {
+        console.log("test1");
+        console.log(event.key);
+        if (event.key === "Enter") {
+                console.log("test2");
+                loginfunc();
+        };
+});
