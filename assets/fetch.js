@@ -415,4 +415,6 @@ document.getElementById("logoutinput").addEventListener("click", () => {
         document.cookie = 'usernamelogined='
         document.getElementById("loginwho").innerText = "未ログイン";
         console.log(document.cookie);
+        document.getElementById("loginname").value = "";
+        document.getElementById("loginpass").value = "";
 })
