@@ -14,7 +14,7 @@ if (document.cookie != "") {
         if (user == "") {
                 document.getElementById("loginwho").innerText = "未ログイン";
         } else {
-                document.getElementById("loginwho").innerText = "ログイン中：" + namein;
+                document.getElementById("loginwho").innerText = "ログイン中：" + user;
         }
 }
 
@@ -392,11 +392,11 @@ document.getElementById("logininput").addEventListener("click", () => {
 
         if (nameisok >= 0) {
                 if (passin == noslashuserpass[nameisok]) {
-                        
-                        document.cookie = 'usernamelogined=' + namein;
+                        user = namein;
+                        document.cookie = 'usernamelogined=' + user;
                         console.log("loginok");
                         console.log(document.cookie);
-                        document.getElementById("loginwho").innerText = "ログイン中：" + namein;
+                        document.getElementById("loginwho").innerText = "ログイン中：" + user;
                         document.getElementById("loginname").value = "";
                         document.getElementById("loginpass").value = "";
 
