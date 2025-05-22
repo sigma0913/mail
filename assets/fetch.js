@@ -408,3 +408,8 @@ document.getElementById("logininput").addEventListener("click", () => {
         }
 })
 
+document.getElementById("logoutinput").addEventListener("click", () => {
+        user = "";
+        document.cookie = 'usernamelogined='
+        document.getElementById("loginwho").innerText = "未ログイン";
+})
