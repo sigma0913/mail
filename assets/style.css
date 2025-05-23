@@ -83,7 +83,7 @@ table{
 }
 
 tr{
-    border-top: #000 1px dashed;
+    border-bottom: #000 1px dashed;
     display: inline-block;
     width: 100%;
     box-sizing: border-box;
@@ -127,10 +127,6 @@ tr{
         background-color:#fff;
         box-sizing: border-box;
     }
-}
-
-#col0{
-    border-top: #fff 0px solid;
 }
 
 .scbutton{

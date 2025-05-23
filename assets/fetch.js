@@ -48,6 +48,9 @@ const config = {
 
 let msgbefore;
 let reloadok = false;
+let showstatus;
+let noccbcc;
+let ncount;
 
 const stampstock = ["good","balloon","oyster_shell","html","css","javascript","tenkaicon","tenkalogo","BlueArchiveLogo_pass_izu792"];
 
@@ -119,6 +122,9 @@ function loaddata() {
                         for (let j = 0; j < 3; j++) {
 
                                 childtdelem = document.createElement("td");
+                                ncount = 0;
+                                showstatus = 0;  //0 hidden 1 stamps 2 show
+                                noccbcc = 0;
 
                                 if (j == 0){
                                         textelem = document.createTextNode(times[i]);
@@ -152,8 +158,26 @@ function loaddata() {
                                                         textelem = document.createTextNode("スタンプの読み込みに失敗");
                                                 };
                                                 childtdelem.appendChild(textelem);
+                                                showstatus = 1;
                                         } else {
                                                 String(notes[i]).split(/\n/).forEach(line => {
+                                                        let brok = true;
+                                                        if (ncount < 2) {
+                                                                if (line.substr(0,2) == "CC" || line.substr(0,2) == "Cc" || line.substr(0,2) == "cc") {
+                                                                        if (line.substr(3) == user && user != "") {
+                                                                                
+                                                                                showstatus = 2;
+                                                                        };
+                                                                } else if (line.substr(0,3) == "BCC" || line.substr(0,3) == "Bcc" || line.substr(0,3) == "bcc") {
+                                                                        brok = false;
+                                                                        if (line.substr(4) == user && user != "") {
+                                                                                showstatus = 2;
+                                                                        };
+                                                                        line = "";
+                                                                } else {
+                                                                        noccbcc++;
+                                                                };
+                                                        };
                                                         String(line).split(/ /).forEach(space => {
                                                                 let atagbefore;
                                                                 let atag;
@@ -177,13 +201,19 @@ function loaddata() {
                                                                 };
                                                                 childtdelem.appendChild(atag);
                                                         });
-                                                        childtdelem.appendChild(document.createElement("br"));
+                                                        if (brok) {
+                                                                childtdelem.appendChild(document.createElement("br"));
+                                                        }
+                                                        ncount++;
                                                 });
                                         };
                                 };
                                 childtdelem.setAttribute("class",childtdid);
                                 parenttr.appendChild(childtdelem);
                         };
+                        if (showstatus == 0 && noccbcc != 2 && !(ncount == 1 && noccbcc == 1)) {
+                                document.getElementById("col" + i).remove();
+                        }
                 };
                 document.getElementById("refresh").setAttribute("tabindex","1");
                 document.getElementById("refresh").setAttribute("class","greenbutton");
@@ -207,8 +237,6 @@ function loaddata() {
 };
 
 loaddata();
-
-
 
 document.getElementById("refresh").addEventListener("click", () => {
 
@@ -270,9 +298,7 @@ document.getElementById("refresh").addEventListener("click", () => {
                                 bodytag.appendChild(loadmsgboxelem);
                                 document.getElementById("loadcircle").setAttribute("class","hidden");
                         } else {
-                                for (let k = 0; k < times.length; k++) {
-                                        document.getElementById("col" + k).remove();
-                                }       
+                                document.getElementById("msgtable").innerHTML = "";    
                                 loaddata();
                         };
                 })
@@ -331,9 +357,7 @@ setInterval(() => {
                                 });
         
                                 if (times[0] !== aftimes[0]) {
-                                        for (let k = 0; k < times.length; k++) {
-                                                document.getElementById("col" + k).remove();
-                                        };
+                                        document.getElementById("msgtable").innerHTML = "";
                                         loaddata();
                                 } else {
                                         reloadok = true;
@@ -374,14 +398,14 @@ function viewtoggle(){
                 viewclose();
         } else {
                 document.getElementById("menuback").style.display = "inline-block";
-                console.log("did");
+                
                 visible = true;
         };
 };
 function viewclose(){
         document.getElementById("menuback").style.display = "none";
         document.getElementById("loginmenu").style.display = "none";
-        console.log("did");
+        
         visible = false;
         sendok = false;
 };
@@ -402,19 +426,21 @@ function loginfunc() {
                 if (passin == noslashuserpass[nameisok]) {
                         user = namein;
                         document.cookie = 'usernamelogined=' + user;
-                        console.log("loginok");
-                        console.log(document.cookie);
+                        
+                        
                         document.getElementById("loginwho").innerText = "ログイン中：" + user;
                         document.getElementById("loginname").value = "";
                         document.getElementById("loginpass").value = "";
+                        document.getElementById("msgtable").innerHTML = "";
+                        loaddata();
 
                 } else {
                         document.getElementById("loginwho").innerText = "ログイン失敗";
-                        console.log(document.cookie);
+                        
                 };
         } else {
                 document.getElementById("loginwho").innerText = "ログイン失敗";
-                console.log(document.cookie);
+                
         };
 };
 
@@ -422,13 +448,15 @@ document.getElementById("logoutinput").addEventListener("click", () => {
         user = "";
         document.cookie = 'usernamelogined='
         document.getElementById("loginwho").innerText = "未ログイン";
-        console.log(document.cookie);
+        
         document.getElementById("loginname").value = "";
         document.getElementById("loginpass").value = "";
+        document.getElementById("msgtable").innerHTML = "";
+        loaddata();
 });
 
 document.getElementById("loginname").addEventListener("keydown", function(event) {
-        console.log("down");
+        
         if (event.key === "Enter" && sendok) {
                 loginfunc();
         };
