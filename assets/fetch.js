@@ -375,7 +375,7 @@ setInterval(() => {
                         reloadok = true;
                 };
         };
-}, 50);
+}, 1000);
 
 let visible = false;
 document.getElementById("hammenu").addEventListener("click", () => {
@@ -432,6 +432,7 @@ function loginfunc() {
                         document.getElementById("loginname").value = "";
                         document.getElementById("loginpass").value = "";
                         document.getElementById("msgtable").innerHTML = "";
+                        reloadok = false;
                         loaddata();
 
                 } else {
