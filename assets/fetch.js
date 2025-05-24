@@ -118,13 +118,14 @@ function loaddata() {
                         table.appendChild(parenttrelem);
 
                         parenttr = document.getElementById("col" + String(i))
+                        
+                        ncount = 0;
+                        showstatus = 0;  //0 hidden 1 stamps 2 show　3 posted
+                        noccbcc = 0;
 
                         for (let j = 0; j < 3; j++) {
 
                                 childtdelem = document.createElement("td");
-                                ncount = 0;
-                                showstatus = 0;  //0 hidden 1 stamps 2 show
-                                noccbcc = 0;
 
                                 if (j == 0){
                                         textelem = document.createTextNode(times[i]);
@@ -133,10 +134,20 @@ function loaddata() {
                                 } else if (j == 1) {
                                         if (noslashuserpass.indexOf(String(whose[i])) > -1) {
                                                 textelem = document.createTextNode(noslashusername[noslashuserpass.indexOf(String(whose[i]))]);
+                                                
+                                                
+                                                
+                                                if (user == noslashusername[noslashuserpass.indexOf(String(whose[i]))]) {
+                                                        showstatus = 3;
+                                                        
+                                                }
                                                 childtdelem.setAttribute("style","color: #44c;");
                                         } else if (username.indexOf(whose[i].split(/\//)[0]) > -1) {
                                                 if (userpass[username.indexOf(whose[i].split(/\//)[0])] == whose[i]) {
                                                         textelem = document.createTextNode(username[username.indexOf(whose[i].split(/\//)[0])]);
+                                                        if (user == username[username.indexOf(whose[i].split(/\//)[0])]) {
+                                                                showstatus = 3;
+                                                        }
                                                         childtdelem.setAttribute("style","color: #44c;");
                                                 } else {
                                                         textelem = document.createTextNode(username[username.indexOf(whose[i].split(/\//)[0])] + "の偽物");
@@ -164,16 +175,18 @@ function loaddata() {
                                                         let brok = true;
                                                         if (ncount < 2) {
                                                                 if (line.substr(0,2) == "CC" || line.substr(0,2) == "Cc" || line.substr(0,2) == "cc") {
-                                                                        if (line.substr(3) == user && user != "") {
+                                                                        if (line.substr(3) == user && user != "" && showstatus != 3) {
                                                                                 
                                                                                 showstatus = 2;
                                                                         };
                                                                 } else if (line.substr(0,3) == "BCC" || line.substr(0,3) == "Bcc" || line.substr(0,3) == "bcc") {
                                                                         brok = false;
-                                                                        if (line.substr(4) == user && user != "") {
+                                                                        if (line.substr(4) == user && user != "" && showstatus != 3) {
                                                                                 showstatus = 2;
                                                                         };
-                                                                        line = "";
+                                                                        if (showstatus != 3) {
+                                                                                line = "";
+                                                                        }
                                                                 } else {
                                                                         noccbcc++;
                                                                 };
@@ -201,7 +214,7 @@ function loaddata() {
                                                                 };
                                                                 childtdelem.appendChild(atag);
                                                         });
-                                                        if (brok) {
+                                                        if (brok || showstatus == 3) {
                                                                 childtdelem.appendChild(document.createElement("br"));
                                                         }
                                                         ncount++;
@@ -211,6 +224,7 @@ function loaddata() {
                                 childtdelem.setAttribute("class",childtdid);
                                 parenttr.appendChild(childtdelem);
                         };
+                        
                         if (showstatus == 0 && noccbcc != 2 && !(ncount == 1 && noccbcc == 1)) {
                                 document.getElementById("col" + i).remove();
                         }
