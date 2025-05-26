@@ -90,6 +90,12 @@ tr{
 }
 
 @media (max-width: 700px){
+    .bluemsg{
+        background-color: #f3f3ff;
+    }
+    .yellowmsg{
+        background-color: #fffff3;
+    }
     .tdtime{
         display: inline-block;
         width: 110px;
@@ -124,8 +130,14 @@ tr{
     .tdnote{
         display: inline-block;
         width: calc(100% - 370px);
-        background-color:#fff;
+        background-color: rgba(255, 255, 255, 0);
         box-sizing: border-box;
+    }
+    .bluemsg{
+        background-color: #f3f3ff;
+    }
+    .yellowmsg{
+        background-color: #fffff3;
     }
 }
 

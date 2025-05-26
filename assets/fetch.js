@@ -114,10 +114,7 @@ function loaddata() {
                 for (let i = 0; i < times.length; i++) {
 
                         parenttrelem = document.createElement("tr");
-                        parenttrelem.setAttribute("id","col" + String(i))
-                        table.appendChild(parenttrelem);
-
-                        parenttr = document.getElementById("col" + String(i))
+                        parenttrelem.setAttribute("id","col" + String(i));
                         
                         ncount = 0;
                         showstatus = 0;  //0 hidden 1 stamps 2 show　3 posted
@@ -134,12 +131,8 @@ function loaddata() {
                                 } else if (j == 1) {
                                         if (noslashuserpass.indexOf(String(whose[i])) > -1) {
                                                 textelem = document.createTextNode(noslashusername[noslashuserpass.indexOf(String(whose[i]))]);
-                                                
-                                                
-                                                
                                                 if (user == noslashusername[noslashuserpass.indexOf(String(whose[i]))]) {
                                                         showstatus = 3;
-                                                        
                                                 }
                                                 childtdelem.setAttribute("style","color: #44c;");
                                         } else if (username.indexOf(whose[i].split(/\//)[0]) > -1) {
@@ -159,6 +152,7 @@ function loaddata() {
                                         childtdid = "tdwho";
                                         childtdelem.appendChild(textelem);
                                 } else if (j == 2){
+                                        let mode;
                                         childtdid = "tdnote";
                                         if (String(notes[i]).substring(0,7) == "/stamp/") {
                                                 let stamp = notes[i].slice(7);
@@ -173,27 +167,40 @@ function loaddata() {
                                         } else {
                                                 String(notes[i]).split(/\n/).forEach(line => {
                                                         let brok = true;
+                                                        mode = "none";
                                                         if (ncount < 2) {
                                                                 if (line.substr(0,2) == "CC" || line.substr(0,2) == "Cc" || line.substr(0,2) == "cc") {
-                                                                        if (line.substr(3) == user && user != "" && showstatus != 3) {
-                                                                                
-                                                                                showstatus = 2;
-                                                                        };
+                                                                        mode = "cc";
+                                                                        // if (line.substr(3) == user && user != "" && showstatus != 3) {   
+                                                                        //         showstatus = 2;
+                                                                        // };
                                                                 } else if (line.substr(0,3) == "BCC" || line.substr(0,3) == "Bcc" || line.substr(0,3) == "bcc") {
+                                                                        mode = "bcc";
                                                                         brok = false;
-                                                                        if (line.substr(4) == user && user != "" && showstatus != 3) {
-                                                                                showstatus = 2;
-                                                                        };
-                                                                        if (showstatus != 3) {
-                                                                                line = "";
-                                                                        }
+                                                                        // if (line.substr(4) == user && user != "" && showstatus != 3) {
+                                                                        //         showstatus = 2;
+                                                                        // };
+                                                                        // if (showstatus != 3) {
+                                                                        //         line = "";
+                                                                        // }
                                                                 } else {
                                                                         noccbcc++;
                                                                 };
                                                         };
                                                         String(line).split(/ /).forEach(space => {
+
+                                                                if (mode == "cc") {
+                                                                        if (space == user && user != "" && showstatus != 3) {   
+                                                                                showstatus = 2;
+                                                                        };
+                                                                } else if (mode == "bcc") {
+                                                                        if (space == user && user != "" && showstatus != 3) {
+                                                                                showstatus = 2;
+                                                                        };
+                                                                }
+
                                                                 let atagbefore;
-                                                                let atag;
+                                                                let atag = "";
 
                                                                 if (Number(String(space).search(/http:\/\//)) >= 0) {
                                                                         atagbefore = document.createTextNode(String(space).slice(0,String(space).search(/http:\/\//)));
@@ -212,7 +219,9 @@ function loaddata() {
                                                                 } else {
                                                                         atag = document.createTextNode(space + " ");
                                                                 };
-                                                                childtdelem.appendChild(atag);
+                                                                if (mode != "bcc") {
+                                                                        childtdelem.appendChild(atag);
+                                                                }
                                                         });
                                                         if (brok || showstatus == 3) {
                                                                 childtdelem.appendChild(document.createElement("br"));
@@ -222,6 +231,16 @@ function loaddata() {
                                         };
                                 };
                                 childtdelem.setAttribute("class",childtdid);
+                                if (showstatus == 3) {
+                                        parenttrelem.setAttribute("class","bluemsg");
+                                } else if (showstatus == 2) {
+                                        parenttrelem.setAttribute("class","yellowmsg")
+                                };
+                                
+                                table.appendChild(parenttrelem);
+
+                                parenttr = document.getElementById("col" + String(i));
+                                
                                 parenttr.appendChild(childtdelem);
                         };
                         
