@@ -107,7 +107,7 @@ tr{
         box-sizing: border-box;
     }
     tr{
-        border-top: #000 2px solid;
+        border-bottom: #000 2px solid;
     }
 }
 @media (min-width: 701px){
