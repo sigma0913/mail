@@ -449,3 +449,14 @@ img{
     border: none;
     cursor: pointer;
 }
+
+.infoptable{
+    width: 400px;
+    border: 1px dashed #000;
+}
+
+@media(max-width: 420px){
+    .infoptable{
+        width: calc(100vw - 20px);
+    }
+};
