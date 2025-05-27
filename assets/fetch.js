@@ -458,7 +458,7 @@ function loginfunc() {
         if (nameisok >= 0) {
                 if (passin == noslashuserpass[nameisok]) {
                         user = namein;
-                        document.cookie = 'usernamelogined=' + user;
+                        document.cookie = 'usernamelogined=' + user + "; max-age=31536000";
                         
                         
                         document.getElementById("loginwho").innerText = "ログイン中：" + user;
