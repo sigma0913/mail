@@ -15,6 +15,7 @@ if (document.cookie != "") {
                 document.getElementById("loginwho").innerText = "未ログイン";
         } else {
                 document.getElementById("loginwho").innerText = "ログイン中：" + user;
+                document.cookie = 'usernamelogined=' + user + "; max-age=31536000";
         }
 }
 
