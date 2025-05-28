@@ -167,7 +167,6 @@ function loaddata() {
                                                 showstatus = 1;
                                         } else {
                                                 String(notes[i]).split(/\n/).forEach(line => {
-                                                        let brok = true;
                                                         mode = "none";
                                                         if (ncount < 2) {
                                                                 if (line.substr(0,2) == "CC" || line.substr(0,2) == "Cc" || line.substr(0,2) == "cc") {
@@ -175,9 +174,8 @@ function loaddata() {
                                                                         // if (line.substr(3) == user && user != "" && showstatus != 3) {   
                                                                         //         showstatus = 2;
                                                                         // };
-                                                                } else if ((line.substr(0,3) == "BCC" || line.substr(0,3) == "Bcc" || line.substr(0,3) == "bcc") && line.substr(4,1) == " ") {
+                                                                } else if ((line.substr(0,3) == "BCC" || line.substr(0,3) == "Bcc" || line.substr(0,3) == "bcc") && line.substr(3,1) == " ") {
                                                                         mode = "bcc";
-                                                                        brok = false;
                                                                         // if (line.substr(4) == user && user != "" && showstatus != 3) {
                                                                         //         showstatus = 2;
                                                                         // };
@@ -224,7 +222,7 @@ function loaddata() {
                                                                         childtdelem.appendChild(atag);
                                                                 }
                                                         });
-                                                        if (brok || showstatus == 3) {
+                                                        if (mode != "bcc" || showstatus == 3) {
                                                                 childtdelem.appendChild(document.createElement("br"));
                                                         }
                                                         ncount++;
