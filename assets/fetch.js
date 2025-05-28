@@ -175,7 +175,7 @@ function loaddata() {
                                                                         // if (line.substr(3) == user && user != "" && showstatus != 3) {   
                                                                         //         showstatus = 2;
                                                                         // };
-                                                                } else if (line.substr(0,3) == "BCC" || line.substr(0,3) == "Bcc" || line.substr(0,3) == "bcc") {
+                                                                } else if ((line.substr(0,3) == "BCC" || line.substr(0,3) == "Bcc" || line.substr(0,3) == "bcc") && line.substr(4,1) == " ") {
                                                                         mode = "bcc";
                                                                         brok = false;
                                                                         // if (line.substr(4) == user && user != "" && showstatus != 3) {
@@ -220,7 +220,7 @@ function loaddata() {
                                                                 } else {
                                                                         atag = document.createTextNode(space + " ");
                                                                 };
-                                                                if (mode != "bcc") {
+                                                                if (mode != "bcc" || showstatus == 3) {
                                                                         childtdelem.appendChild(atag);
                                                                 }
                                                         });
