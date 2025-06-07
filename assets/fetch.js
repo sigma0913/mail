@@ -147,6 +147,8 @@ function loaddata() {
                                                         textelem = document.createTextNode(username[username.indexOf(whose[i].split(/\//)[0])] + "の偽物");
                                                         childtdelem.setAttribute("style","color: red;");
                                                 };
+                                        } else if (!isNaN(whose[i])) {
+                                                textelem = document.createTextNode(String(whose[i]).substring(0,1) + "***********");
                                         } else {
                                                 textelem = document.createTextNode(String(whose[i]).substring(0,12));
                                         };
