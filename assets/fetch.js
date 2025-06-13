@@ -31,10 +31,10 @@ const tletter = ["ｔ","ʈ","𝘵","𝒕","𝗍","𝐭","𖼹"];
 const largetletter = ["Т","Τ","Ｔ","𐊗","𐊱","𐤯","Ꭲ","𖼊","𑢼","ߠ","ꓔ","𑫝","𐨝","𐝇","𖩋","𐍄"];
 
 
-const username = ["sigma","Tanatana792","Usuharu1189","AKT","生牡蠣","misan","jingyu","花より団子"];
-const userpass = ["sigma/17291268","Tanatana792/206","Usuharu1189/1016","AKT/299792458","生牡蠣/1026","misan/2042","jingyu/5173","花より団子/107929"];
-const noslashusername = ["AKT","生牡蠣","sigma","Tanatana792","Usuharu1189","misan","jingyu","花より団子"]
-const noslashuserpass = ["299792458","1026","17291268","206","1016","2042","5173","107929"]
+const username = ["sigma","Tanatana792","Usuharu1189","AKT","生牡蠣","misan","jingyu","花より団子","Ojo0901"];
+const userpass = ["sigma/17291268","Tanatana792/206","Usuharu1189/1016","AKT/299792458","生牡蠣/1026","misan/2042","jingyu/5173","花より団子/107929","Ojo0901/pocha"];
+const noslashusername = ["AKT","生牡蠣","sigma","Tanatana792","Usuharu1189","misan","jingyu","花より団子","Ojo0901"]
+const noslashuserpass = ["299792458","1026","17291268","206","1016","2042","5173","107929","pocha"]
 
 let bodytag = document.getElementById("body");
 
