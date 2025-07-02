@@ -96,3 +96,46 @@ h1 {
     min-height: 4em;
   }
 }
+
+/* ヘッダー */
+.header {
+  width: 100%;
+  background-color: #34495e;
+  padding: 0.8em 1.5em;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  position: fixed;      /* ← 追加：固定表示 */
+  top: 0;               /* ← 上部に固定 */
+  left: 0;
+  z-index: 1000;        /* ← 他の要素の上に表示 */
+}
+
+.nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 2em;
+}
+
+.nav a {
+  color: #ecf0f1;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1em;
+  transition: color 0.2s ease;
+}
+
+.nav a:hover {
+  color: #1abc9c;
+}
+
+/* モバイル対応 */
+@media (max-width: 480px) {
+  .nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+  }
+}
