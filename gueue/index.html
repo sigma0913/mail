@@ -3,8 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="./assets/gueue_favicon.png">
   <title>ぐー数分解</title>
   <link rel="stylesheet" href="assets/style.css">
+  <script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    },
+    svg: { fontCache: 'global' }
+  };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
 </head>
 <body>
   <!-- ヘッダー追加 -->
@@ -18,7 +29,7 @@
     </nav>
   </header>
   <div class="container">
-    <h1>ぐー数分解<br><span style="font-size: 0.5em;">Ver (1-1).(1+1).(5-1)</span></h1>
+    <h1>ぐー数分解<br><span style="font-size: 0.5em;">Ver (1-1).(1+1).5</span></h1>
     <input type="number" id="input" placeholder="数を入力">
     <div id="output"></div> 
   </div>

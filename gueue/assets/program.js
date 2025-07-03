@@ -370,8 +370,15 @@ function compressRepeatedAdds(expr) {
 
 /******************* 8. 再帰分解 *******************/
 function normalizePluses(expr) {
-  // 「+」が連続してたら1個にまとめる（例: "+++" → "+"）
-  return expr.replace(/\++/g, '+');
+  // 「+」が連続してたら1個にまとめる
+  expr = expr.replace(/\++/g, '+');
+  // 「+-」は「-」
+  expr = expr.replace(/\+\-/g, '-');
+  // 「-+」は「-」
+  expr = expr.replace(/\-\+/g, '-');
+  // 「--」は「+」
+  expr = expr.replace(/\-\-/g, '+');
+  return expr;
 }
 
 function decomposeLarge(num) {
