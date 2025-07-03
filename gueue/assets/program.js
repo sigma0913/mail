@@ -13,6 +13,8 @@ const BASE_EXPR = '((5*(1+1))^(5-1))';
 
 /******************* 2. 1〜100 の gueue number 表現 *******************/
 const COUNT_EXPR = {
+0: '(1-1)',
+
 1: '1',
 2: '(1+1)',
 3: '(0.75*(5-1))',
@@ -373,7 +375,7 @@ function normalizePluses(expr) {
 }
 
 function decomposeLarge(num) {
-  if (num === 0) return '0';
+  if (num === 0) return '1-1';
   if (Math.abs(num) < BASE_VAL) {
     const res = compressRepeatedAdds(decomposeChunk(num).expr);
     return normalizePluses(res);
